@@ -1,0 +1,14 @@
+{
+	"name": "uam/maintenance-bundle",
+	"type": "symfony-bundle",
+	"license": "MIT",
+	"autoload": {
+		"psr-4": {
+			"UAM\\MaintenanceBundle\\": ""
+		}
+	},
+	"require": {
+		"symfony/http-kernel": "~2.3"
+	}
+}
+

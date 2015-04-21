@@ -1,0 +1,3 @@
+uam_maintenance_homepage:
+    path:     /hello/{name}
+    defaults: { _controller: UAMMaintenanceBundle:Default:index }
