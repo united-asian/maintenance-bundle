@@ -1,6 +1,6 @@
 <?php
 
-namespace uam\UAMMaintenanceBundle;
+namespace UAM\Bundle\UAMMaintenanceBundle;
 
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 

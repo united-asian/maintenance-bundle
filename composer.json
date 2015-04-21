@@ -4,11 +4,15 @@
 	"license": "MIT",
 	"autoload": {
 		"psr-4": {
-			"UAM\\MaintenanceBundle\\": ""
+			"UAM\\Bundle\\MaintenanceBundle\\": ""
 		}
 	},
 	"require": {
 		"symfony/http-kernel": "~2.3"
-	}
+	},
+	"extra": {
+		"branch-alias": {
+			"dev-master": "0.1.x-dev"
+		}
 }
-
+}
