@@ -7,8 +7,15 @@
 			"UAM\\Bundle\\MaintenanceBundle\\": ""
 		}
 	},
+		"repositories": [
+		{
+			"type": "composer",
+			"url": "http://satis.united-asian.com/symfony"
+		}
+	],
 	"require": {
-		"symfony/http-kernel": "~2.3"
+		"symfony/http-kernel": "~2.3",
+		"uam/datatables-bundle": "~2.1.3"
 	},
 	"extra": {
 		"branch-alias": {
