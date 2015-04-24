@@ -4,28 +4,16 @@
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
         <title>{% block title %}{% endblock %}</title>
 			{% block head_style %}
-			{% stylesheets filter="cssrewrite"
-				'bundles/uamdatatables/vendor/datatables-plugins/integration/bootstrap/3/dataTables.bootstrap.css'
-			%}
-			<link href="{{ asset_url }}" type="text/css" rel="stylesheet" media="screen" />
-			{% endstylesheets %}
-		{% endblock head_style %}
+			{% endblock %}
     </head>
     <body>
         <div id="content">
-            {% block body %}{% endblock %}
+            {% block maintenance_content %}{% endblock %}
         </div>
 	<div id="footer">
         {% block footer %}{% endblock %}
 	</div>>
 	{% block foot_script %}
-		{% javascripts
-			'bundles/uamdatatables/vendor/datatables/media/js/jquery.dataTables.min.js'
-			'bundles/uamdatatables/vendor/datatables-plugins/integration/bootstrap/3/dataTables.bootstrap.min.js'
-			'bundles/uamhrcore/vendor/moment/min/moment-with-locales.min.js'
-		%}
-		<script src="{{ asset_url }}"></script>
-		{% endjavascripts %}
 	{% endblock foot_script %}
 	</body>
 </html>
