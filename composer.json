@@ -15,7 +15,7 @@
 	],
 	"require": {
 		"symfony/http-kernel": "~2.3",
-		"uam/datatables-bundle": "~2.1.3"
+		"uam/datatables-bundle": "~3.0"
 	},
 	"extra": {
 		"branch-alias": {
