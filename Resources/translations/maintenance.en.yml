@@ -1,0 +1,6 @@
+maintenance:
+    id:             Id
+    date_start:     Date_start
+    date_end:       Date_end
+    description:    Description
+    confirmed:      Confirmed
