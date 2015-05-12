@@ -4,7 +4,8 @@
     {{ parent() }}
     {% stylesheets filter="cssrewrite" output="css/*.css"
 		'bundles/uamdatatables/vendor/datatables-plugins/integration/bootstrap/3/dataTables.bootstrap.css'
-		'bundles/uammaintenance/css/table.css'
+		'bundles/uamdatatables/vendor/datatables-plugins/integration/font-awesome/dataTables.fontAwesome.css'
+		'bundles/uamdatatables/css/table.css'
     %}
         <link href="{{ asset_url }}" type="text/css" rel="stylesheet" media="screen" />
     {% endstylesheets %}
