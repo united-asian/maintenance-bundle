@@ -1,27 +1,8 @@
-{% extends "::base.html.twig" %}
 
-{% block head_style %}
-    {{ parent() }}
-    {% stylesheets filter="cssrewrite" output="css/*.css"
-		'bundles/uamdatatables/vendor/datatables-plugins/integration/bootstrap/3/dataTables.bootstrap.css'
-		'bundles/uamdatatables/vendor/datatables-plugins/integration/font-awesome/dataTables.fontAwesome.css'
-		'bundles/uamdatatables/css/table.css'
-    %}
-        <link href="{{ asset_url }}" type="text/css" rel="stylesheet" media="screen" />
-    {% endstylesheets %}
-{% endblock head_style %}
+{% include "UAMDatatablesBundle:Datatables:head_style.html.twig" %}
 
 {% block maintenance_content %}
 	{% include 'UAMMaintenanceBundle:Maintenance:maintenance.html.twig' %}
 {% endblock %}
 
-{% block foot_script %}
-    {{ parent() }}
-    {% javascripts
-        'bundles/uamdatatables/vendor/datatables/media/js/jquery.dataTables.min.js'
-		'bundles/uamdatatables/vendor/datatables-plugins/integration/bootstrap/3/dataTables.bootstrap.min.js'
-		'bundles/uammaintenance/js/maintenance.js'
-    %}
-        <script src="{{ asset_url }}"></script>
-    {% endjavascripts %}
-{% endblock %}
+{% include "UAMDatatablesBundle:Datatables:foot_script.html.twig" %}

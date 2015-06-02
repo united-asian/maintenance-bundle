@@ -66,8 +66,6 @@ $( document ).ready(function() {
 	$( ".maintenance" ).maintenance( maintenance );
 });
 
-Because datatables uses ajax, it needs to be told which url to call. For this, datatables expects a ajax.url option. This url typically depends on the environment, which means it is computed by symfony in PHP. To pass PHP values to javascript, we use the following pattern: In each page template a javascript variable is defined (typically named after the page's contents) ; this variable holds values computed via PHP. The variable is then passed to the page's plugin when it is invoked.
-
 {% block foot_script %}
 	{{ parent() }}
 	<javascripts>
@@ -77,7 +75,7 @@ Because datatables uses ajax, it needs to be told which url to call. For this, d
 	maintenance = {
 		datatables: {
 			ajax: {
-				url: "{{ path('maintenance_record') }}"
+				url: "{{ path('maintenance_list') }}"
 			}
 		}
 	};
