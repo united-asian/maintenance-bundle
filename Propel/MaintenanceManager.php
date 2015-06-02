@@ -13,7 +13,7 @@ class EntityManager extends AbstractEntityManager
      */
     protected function getQuery(Request $request)
     {
-        return UAMMaintenanceQuery::create('Member');
+        return UAMMaintenanceQuery::create('Maintenance');
     }
 
     /**

@@ -28,15 +28,27 @@ class MaintenanceController extends Controller
     }
 
     /**
-    * @Route("/list", name="maintenance_list")
+    * @Route(
+     *      "/list",
+     *      name="maintenance_list",
+     *      requirements={
+     *          "_format": "json"
+     *      },
+     *      defaults={
+     *          "_format": "json"
+     *      }
+     * )
     */
        public function listAction(Request $request)
     {
         return $this->baseListAction($request);
     }
 
+    /**
+     * @inheritdoc
+     */
     protected function getEntityManager()
     {
-
+        return new MemberManager();
     }
 }
