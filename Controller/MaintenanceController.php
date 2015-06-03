@@ -6,11 +6,11 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use UAM\Bundle\DatatablesBundle\Controller\DatatablesEnabledControllerTrait;
-use UAM\Bundle\MaintenanceBundle\Model\UAMMaintenanceQuery;
-use UAM\Bundle\MaintenanceBundle\Propel\MaintenanceManager;
+use UAM\Bundle\MaintenanceBundle\Propel\UAMMaintenanceQuery;
+use UAM\Bundle\MaintenanceBundle\Entitymanager\MaintenanceManager;
 
 /**
- * @Route("/maintenance", name="maintenance_record")
+ * @Route("/maintenance", name="uam_maintenance_admin")
 */
 class MaintenanceController extends Controller
 {
@@ -31,7 +31,7 @@ class MaintenanceController extends Controller
    /**
     * @Route(
     *       "/list",
-    *       name="maintenance_list",
+    *       name="uam_maintenance_admin_list",
     *       requirements={
     *           "_format": "json"
     *       },
