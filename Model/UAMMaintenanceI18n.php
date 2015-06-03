@@ -1,6 +1,6 @@
 <?php
 
-namespace Model;
+namespace UAM\Bundle\MaintenanceBundle\Model;
 
 use Model\om\BaseUAMMaintenanceI18n;
 

@@ -1,8 +1,8 @@
 <?php
 
-namespace Model;
+namespace UAM\Bundle\MaintenanceBundle\Model;
 
-use Model\om\BaseUAMMaintenanceQuery;
+use UAM\Bundle\MaintenanceBundle\Model\om\BaseUAMMaintenanceQuery;
 
 class UAMMaintenanceQuery extends BaseUAMMaintenanceQuery
 {

@@ -2,7 +2,7 @@
 
 namespace UAM\Bundle\MaintenanceBundle\Propel;
 
-use Model\UAMMaintenanceQuery;
+use UAM\Bundle\MaintenanceBundle\Model\UAMMaintenanceQuery;
 use Symfony\Component\HttpFoundation\Request;
 use UAM\Bundle\DatatablesBundle\Propel\AbstractEntityManager;
 

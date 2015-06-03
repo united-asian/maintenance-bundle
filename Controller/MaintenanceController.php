@@ -6,7 +6,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use UAM\Bundle\DatatablesBundle\Controller\DatatablesEnabledControllerTrait;
-use Model\UAMMaintenanceQuery;
+use UAM\Bundle\MaintenanceBundle\Model\UAMMaintenanceQuery;
 use UAM\Bundle\MaintenanceBundle\Propel\MaintenanceManager;
 
 /**
@@ -28,8 +28,17 @@ class MaintenanceController extends Controller
         return $this->baseIndexAction($request);
     }
 
-    /**
-    * @Route("/list", name="maintenance_list" )
+   /**
+    * @Route(
+    *       "/list",
+    *       name="maintenance_list",
+    *       requirements={
+    *           "_format": "json"
+    *       },
+    *       defaults={
+    *           "_format": "json"
+    *       }
+    * )
     */
     public function listAction(Request $request)
     {
@@ -43,4 +52,3 @@ class MaintenanceController extends Controller
     {
         return new MaintenanceManager();
     }
-}
