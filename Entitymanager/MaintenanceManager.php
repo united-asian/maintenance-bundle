@@ -1,8 +1,8 @@
 <?php
 
-namespace UAM\Bundle\MaintenanceBundle\Propel;
+namespace UAM\Bundle\MaintenanceBundle\Entitymanager;
 
-use UAM\Bundle\MaintenanceBundle\Model\UAMMaintenanceQuery;
+use UAM\Bundle\MaintenanceBundle\Propel\UAMMaintenanceQuery;
 use Symfony\Component\HttpFoundation\Request;
 use UAM\Bundle\DatatablesBundle\Propel\AbstractEntityManager;
 

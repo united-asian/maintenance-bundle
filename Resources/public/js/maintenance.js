@@ -41,7 +41,7 @@
 				{ data: "date_start" },
 				{ data: "date_end" },
 				{ data: "description" },
-				{ data: "confirmed" }
+				{ data: "confirmed" },
 				{ data: null }
 			],
 			columnDefs: [
@@ -50,7 +50,7 @@
 				{ className: "actions", targets: [ 5 ] } // Set special "actions" class on cells in the last column
 			],
 			language: {
-				url: "/bundles/uamdatatables/lang" + persons.locale + ".json"
+				url: "/bundles/uamdatatables/lang" + maintenance.locale + ".json"
 			},
 			orderable: true,
 			paging: true,
@@ -65,19 +65,3 @@
 $( document ).ready(function() {
 	$( ".maintenance" ).maintenance( maintenance );
 });
-
-{% block foot_script %}
-	{{ parent() }}
-	<javascripts>
-	...
-	<endjavascripts>
-	<script>
-	maintenance = {
-		datatables: {
-			ajax: {
-				url: "{{ path('maintenance_list') }}"
-			}
-		}
-	};
-	</script>
-{% endblock head_script %}
