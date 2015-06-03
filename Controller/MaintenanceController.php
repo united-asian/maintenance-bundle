@@ -18,6 +18,7 @@ class MaintenanceController extends Controller
         indexAction as baseIndexAction;
         listAction as baseListAction;
     }
+
     /**
      * @Route("/")
      * @Template()
@@ -28,18 +29,9 @@ class MaintenanceController extends Controller
     }
 
     /**
-    * @Route(
-     *      "/list",
-     *      name="maintenance_list",
-     *      requirements={
-     *          "_format": "json"
-     *      },
-     *      defaults={
-     *          "_format": "json"
-     *      }
-     * )
+    * @Route("/list", name="maintenance_list" )
     */
-       public function listAction(Request $request)
+    public function listAction(Request $request)
     {
         return $this->baseListAction($request);
     }
@@ -49,6 +41,6 @@ class MaintenanceController extends Controller
      */
     protected function getEntityManager()
     {
-        return new MemberManager();
+        return new MaintenanceManager();
     }
 }

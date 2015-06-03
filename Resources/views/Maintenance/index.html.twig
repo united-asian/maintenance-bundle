@@ -1,4 +1,3 @@
-
 {% include "UAMDatatablesBundle:Datatables:head_style.html.twig" %}
 
 {% block maintenance_content %}
@@ -6,13 +5,13 @@
 {% endblock %}
 
 {% block foot_script %}
-	    {% include "UAMDatatablesBundle:Datatables:foot_script.html.twig" %}
-    <script>
-    var uamdatatables = {
-        ajax: {
-            url: "{{ path('maintenance_list') }}"
-        }
-    };
-    </script>
+		{% include "UAMDatatablesBundle:Datatables:foot_script.html.twig" %}
+	<script>
+	var uamdatatables = {
+		ajax: {
+			url: "{{ path('maintenance_list') }}"
+		}
+	};
+	</script>
 {% endblock %}
 {% include "UAMDatatablesBundle:Datatables:foot_script.html.twig" %}

@@ -1,22 +1,14 @@
-{% trans_default_domain "UAMMaintenanceBundle" %}
+{% extends "UAMDatatablesBundle:Datatables:list.json.twig" %}
 
-{% spaceless %}
+{% block data %}
+{% set uam_maintenance = entity %}
 {
-    "draw": "{{ app.request.query.all.draw }}",
-    "recordsTotal": {{ total_count }},
-    "recordsFiltered": {{ filtered_count }},
-    "data" : [
-        {% for maintenance_record in maintenance_records %}
-            {
-                "DT_RowId": "{{ 'uam_maintenance' ~ uam_maintenance.id }}",
-                "DT_RowClass": "{{ 'uam_maintenance' }}",
-                "id": "{{ uam_maintenance.id }}",
+				"DT_RowId": "{{ 'uam_maintenance' ~ uam_maintenance.id }}",
+				"DT_RowClass": "{{ 'uam_maintenance' }}",
+				"id": "{{ uam_maintenance.id }}",
 				"date_start": "{{ uam_maintenance.date_start }}",
 				"date_end": "{{ uam_maintenance.date_end }}",
 				"description": "{{ uam_maintenance.description }}",
-				"confirmed": "{{ uam_maintenance.confirmed }}",
-            }{% if not loop.last %},{% endif %}
-        {% endfor %}
-    ]
+				"confirmed": "{{ uam_maintenance.confirmed }}"
 }
-{% endspaceless %}
+{% endblock %}z

@@ -1,17 +1,17 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-        <title>{% block title %}{% endblock %}</title>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<title>{% block title %}{% endblock %}</title>
 			{% block head_style %}
 			{% endblock %}
-    </head>
-    <body>
-        <div id="content">
-            {% block maintenance_content %}{% endblock %}
-        </div>
+	</head>
+	<body>
+		<div id="content">
+			{% block maintenance_content %}{% endblock %}
+		</div>
 	<div id="footer">
-        {% block footer %}{% endblock %}
+		{% block footer %}{% endblock %}
 	</div>>
 	{% block body_class %}uamdatatables{% endblock %}
 	{% block foot_script %}
