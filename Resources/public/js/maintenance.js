@@ -37,17 +37,16 @@
 		datatables: {
 			autoWidth: false,
 			columns: [
-				{ data: null },
+				{ data: "id" },
 				{ data: "date_start" },
 				{ data: "date_end" },
 				{ data: "description" },
-				{ data: "confirmed" },
-				{ data: null }
+				{ data: "confirmed" }
 			],
 			columnDefs: [
-				{ orderable: false, targets: [ 0, 5 ] }, // First column and last column ("actions") are not sortable
-				{ visible: false, targets: [ 0 ] }, // Hide the first column
-				{ className: "actions", targets: [ 5 ] } // Set special "actions" class on cells in the last column
+				{ orderable: false, targets: [ 0 ] }, // First column and last column ("actions") are not sortable
+				{ visible: false, targets: [ 0 ] } // Hide the first column
+//				{ className: "actions", targets: [ 5 ] } // Set special "actions" class on cells in the last column
 			],
 			language: {
 				url: "/bundles/uamdatatables/lang" + maintenance.locale + ".json"
@@ -63,5 +62,5 @@
 
 // Make sure that a parent element of the table has the class ''.persons'' set so that this plugin can be triggered properly when the page is loaded.
 $( document ).ready(function() {
-	$( ".maintenance" ).maintenance( maintenance );
+	$( ".maintenances" ).maintenance( uammaintenances );
 });

@@ -1,12 +1,14 @@
 {% extends "UAMMaintenanceBundle::base.html.twig" %}
 
+{% block body_class %}maintenances{% endblock %}
+
 {% block head_style %}
 	{{ parent() }}
 	{% include "UAMDatatablesBundle:Datatables:head_style.html.twig" %}
-
 {% endblock %}
 
 {% block maintenance_content %}
+	{{ parent() }}
 	{% include 'UAMMaintenanceBundle:Maintenance:maintenance.html.twig' %}
 {% endblock %}
 
@@ -14,11 +16,10 @@
 	    {{ parent() }}
 		{% include "UAMDatatablesBundle:Datatables:foot_script.html.twig" %}
 	<script>
-	var uamdatatables = {
-		ajax: {
-			url: "{{ path('uam_maintenance_admin_list') }}"
+	var uammaintenances = {
+		datatables: {
+			ajax: "{{ path('uam_maintenance_admin_list') }}"
 		}
 	};
 	</script>
-
 {% endblock %}
