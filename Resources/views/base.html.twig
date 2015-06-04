@@ -3,8 +3,20 @@
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 		<title>{% block title %}{% endblock %}</title>
-			{% block head_style %}
+				{% block head_style %}
+				{% stylesheets filter="cssrewrite"
+					'bundles/uamdatatables/vendor/datatables-plugins/integration/bootstrap/3/dataTables.bootstrap.css'
+				%}
+					<link href="{{ asset_url }}" type="text/css" rel="stylesheet" media="screen" />
+				{% endstylesheets %}
 			{% endblock %}
+			{% block head_script %}
+				<script>
+					var maintenance = {
+						locale: "{{ app.request.locale }}"
+					};
+				</script>
+			{% endblock head_script %}
 	</head>
 	<body>
 		<div id="content">
@@ -13,8 +25,15 @@
 	<div id="footer">
 		{% block footer %}{% endblock %}
 	</div>>
-	{% block body_class %}uamdatatables{% endblock %}
-	{% block foot_script %}
+		{% block foot_script %}
+		{% javascripts
+		'bundles/uamdatatables/vendor/datatables/media/js/jquery.js'
+		'bundles/uamdatatables/vendor/datatables/media/js/jquery.dataTables.min.js'
+		'bundles/uamdatatables/vendor/datatables-plugins/integration/bootstrap/3/dataTables.bootstrap.min.js'
+		'bundles/uammaintenance/js/maintenance.js'
+		%}
+	<script src="{{ asset_url }}"></script>
+{% endjavascripts %}
 	{% endblock foot_script %}
 	</body>
 </html>
