@@ -1,10 +1,17 @@
-{% include "UAMDatatablesBundle:Datatables:head_style.html.twig" %}
+{% extends "UAMMaintenanceBundle::base.html.twig" %}
+
+{% block head_style %}
+	{{ parent() }}
+	{% include "UAMDatatablesBundle:Datatables:head_style.html.twig" %}
+
+{% endblock %}
 
 {% block maintenance_content %}
 	{% include 'UAMMaintenanceBundle:Maintenance:maintenance.html.twig' %}
 {% endblock %}
 
 {% block foot_script %}
+	    {{ parent() }}
 		{% include "UAMDatatablesBundle:Datatables:foot_script.html.twig" %}
 	<script>
 	var uamdatatables = {
@@ -13,5 +20,5 @@
 		}
 	};
 	</script>
+
 {% endblock %}
-{% include "UAMDatatablesBundle:Datatables:foot_script.html.twig" %}
