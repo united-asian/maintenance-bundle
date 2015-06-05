@@ -7,6 +7,8 @@
 		{% block head_style %}
 			{% stylesheets filter="cssrewrite"
 				'bundles/uamdatatables/vendor/datatables-plugins/integration/bootstrap/3/dataTables.bootstrap.css'
+				'bundles/uamdatatables/vendor/datatables-plugins/integration/font-awesome/dataTables.fontAwesome.css'
+				'bundles/uamdatatables/css/table.css'
 			%}
 				<link href="{{ asset_url }}" type="text/css" rel="stylesheet" media="screen" />
 			{% endstylesheets %}
@@ -20,7 +22,7 @@
 		{% endblock head_script %}
 	</head>
 	<body>
-		<div id="content">
+		<div class="content {% block body_class %}{% endblock %}">
 			{% block maintenance_content %}{% endblock %}
 		</div>
 	<div id="footer">
