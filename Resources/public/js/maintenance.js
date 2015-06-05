@@ -38,6 +38,7 @@
 		datatables: {
 			autoWidth: false,
 			columns: [
+				{ data: null },
 				{ data: "id" },
 				{ data: "date_start" },
 				{ data: "date_end" },
