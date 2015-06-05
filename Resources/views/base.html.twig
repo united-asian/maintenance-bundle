@@ -1,15 +1,16 @@
 {% extends "UAMBootstrapBundle::stickyfooter.html.twig" %}
 
-		{% block head_style %}
-			{{ parent() }}
-			{% stylesheets filter="cssrewrite"
-				'bundles/uamdatatables/vendor/datatables-plugins/integration/bootstrap/3/dataTables.bootstrap.css'
-				'bundles/uamdatatables/vendor/datatables-plugins/integration/font-awesome/dataTables.fontAwesome.css'
-				'bundles/uamdatatables/css/table.css'
-			%}
-				<link href="{{ asset_url }}" type="text/css" rel="stylesheet" media="screen" />
-			{% endstylesheets %}
-		{% endblock %}
+	{% block head_style %}
+		{{ parent() }}
+		{% stylesheets filter="cssrewrite"
+			'bundles/uamdatatables/vendor/datatables/media/css/jquery.dataTables.min.css'
+			'bundles/uamdatatables/vendor/datatables-plugins/integration/bootstrap/3/dataTables.bootstrap.css'
+			'bundles/uamdatatables/vendor/datatables-plugins/integration/font-awesome/dataTables.fontAwesome.css'
+			'bundles/uamdatatables/css/table.css'
+		%}
+			<link href="{{ asset_url }}" type="text/css" rel="stylesheet" media="screen" />
+		{% endstylesheets %}
+	{% endblock %}
 		{% block head_script %}
 			{{ parent() }}
 			<script>
@@ -18,7 +19,7 @@
 				};
 			</script>
 		{% endblock head_script %}
-	{% block body %}
+	{% block main %}
 		<div class="content {% block body_class %}{% endblock %}">
 			{% block maintenance_content %}{% endblock %}
 		</div>
