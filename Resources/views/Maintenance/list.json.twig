@@ -1,4 +1,5 @@
 {% extends "UAMDatatablesBundle:Datatables:list.json.twig" %}
+{% trans_default_domain "UAMMaintenanceBundle" %}
 
 {% block data %}
 {% set uam_maintenance = entity %}
@@ -6,8 +7,8 @@
 				"DT_RowId": "{{ 'uam_maintenance' ~ uam_maintenance.id }}",
 				"DT_RowClass": "{{ 'uam_maintenance' }}",
 				"id": "{{ uam_maintenance.id }}",
-				"date_start": "{{ uam_maintenance.date_start }}",
-				"date_end": "{{ uam_maintenance.date_end }}",
+				"date_start": "{{ uam_maintenance.dateStart|date('m/d/Y') }}",
+				"date_end": "{{ uam_maintenance.dateEnd|date('m/d/Y') }}",
 				"description": "{{ uam_maintenance.description }}",
 				"confirmed": "{{ uam_maintenance.confirmed }}"
 }
