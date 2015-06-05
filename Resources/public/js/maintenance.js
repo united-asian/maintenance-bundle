@@ -6,18 +6,19 @@
 			table;
 
 		// Public methods
+
 		var methods = {
 			init: function( options ) {
-				settings = $.extend( true, {}, $.fn.maintenance.defaults, options );
+				var $this = $( this );
+
+				settings = $.extend( true, {}, this.maintenance.defaults, options );
 
 				return this.each(function() {
-					var $this = $( this );
-
 					table = $( "table.table", this ).dataTable( $.extend( true, {}, settings.datatables, {
-			initComplete: function( settings, json ) {
-   				$( settings.nTable ).css( "display", "table" );
-			}
-					} ) );
+						initComplete: function( settings, json ) {
+							$( this ).show();
+						}
+					} ));
 				});
 			}
 		};
