@@ -8,7 +8,7 @@
 				"id": "{{ uam_maintenance.id }}",
 				"date_start": "{{ uam_maintenance.dateStart|date('m/d/Y') }}",
 				"date_end": "{{ uam_maintenance.dateEnd|date('m/d/Y') }}",
-				"description": "{{ uam_maintenance.description }}",
+				"description": "{{ uam_maintenance.setLocale(app.request.locale).description }}",
 				"confirmed": "{{ uam_maintenance.confirmed }}"
 }
 {% endblock %}
