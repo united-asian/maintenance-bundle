@@ -1,10 +1,7 @@
-<!DOCTYPE html>
-<html>
-	<head>
-		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-		<title>{% block title %}{% endblock %}</title>
+{% extends "UAMBootstrapBundle::stickyfooter.html.twig" %}
 
 		{% block head_style %}
+			{{ parent() }}
 			{% stylesheets filter="cssrewrite"
 				'bundles/uamdatatables/vendor/datatables-plugins/integration/bootstrap/3/dataTables.bootstrap.css'
 				'bundles/uamdatatables/vendor/datatables-plugins/integration/font-awesome/dataTables.fontAwesome.css'
@@ -14,29 +11,27 @@
 			{% endstylesheets %}
 		{% endblock %}
 		{% block head_script %}
+			{{ parent() }}
 			<script>
 				var maintenance = {
 					locale: "{{ app.request.locale }}"
 				};
 			</script>
 		{% endblock head_script %}
-	</head>
-	<body>
+	{% block body %}
 		<div class="content {% block body_class %}{% endblock %}">
 			{% block maintenance_content %}{% endblock %}
 		</div>
-	<div id="footer">
-		{% block footer %}{% endblock %}
-	</div>
+	{% endblock %}
+
 		{% block foot_script %}
-		{% javascripts
-		'bundles/uamdatatables/vendor/datatables/media/js/jquery.js'
-		'bundles/uamdatatables/vendor/datatables/media/js/jquery.dataTables.min.js'
-		'bundles/uamdatatables/vendor/datatables-plugins/integration/bootstrap/3/dataTables.bootstrap.min.js'
-		'bundles/uammaintenance/js/maintenance.js'
-		%}
-	<script src="{{ asset_url }}"></script>
-{% endjavascripts %}
-	{% endblock foot_script %}
-	</body>
-</html>
+			{{ parent() }}
+			{% javascripts
+				'bundles/uamdatatables/vendor/datatables/media/js/jquery.js'
+				'bundles/uamdatatables/vendor/datatables/media/js/jquery.dataTables.min.js'
+				'bundles/uamdatatables/vendor/datatables-plugins/integration/bootstrap/3/dataTables.bootstrap.min.js'
+				'bundles/uammaintenance/js/maintenance.js'
+			%}
+		<script src="{{ asset_url }}"></script>
+			{% endjavascripts %}
+		{% endblock foot_script %}
