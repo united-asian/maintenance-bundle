@@ -39,6 +39,8 @@ class MaintenanceController extends Controller
     *           "_format": "json"
     *       }
     * )
+    *
+    * @Template()
     */
     public function listAction(Request $request)
     {
@@ -52,3 +54,4 @@ class MaintenanceController extends Controller
     {
         return new MaintenanceManager();
     }
+}
