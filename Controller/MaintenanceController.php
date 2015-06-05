@@ -47,6 +47,24 @@ class MaintenanceController extends Controller
         return $this->baseListAction($request);
     }
 
+        /**
+     * @Route(
+     *      "maintenance/{id}",
+     *      name="uam_maintenance_admin_show",
+     *      requirements={
+     *          "id": "\d+"
+     *      }
+     * )
+     *
+     * @Template()
+     */
+    public function showAction(Request $request, Maintenance $maintenance)
+    {
+        return array(
+            'maintenance' => $maintenance
+        );
+    }
+
     /**
      * @inheritdoc
      */
