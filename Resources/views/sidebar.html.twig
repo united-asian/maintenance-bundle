@@ -1,0 +1,15 @@
+{% extends "UAMMaintenanceBundle::base.html.twig" %}
+
+{% trans_default_domain "maintenance" %}
+
+{% block maintenance_content %}
+<div class="sidebar-wrapper">
+	<aside class="sidebar">
+		{% block maintenance_sidebar %}{% endblock %}
+	</aside>
+	<div class="with-sidebar">
+		{% include "UAMBootstrapBundle::flash.html.twig" %}
+		{% block main %}main content{% endblock %}
+	</div>
+</div>
+{% endblock %}

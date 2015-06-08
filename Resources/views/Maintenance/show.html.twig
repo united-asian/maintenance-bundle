@@ -1,0 +1,13 @@
+{% extends "UAMMaintenanceBundle::sidebar.html.twig" %}
+
+{% trans_default_domain "maintenance" %}
+
+{% block uam_page_nav %}
+<ul class="nav nav-pills navbar-right">
+	<li>
+		<a href="{{ path('uam_maintenance_admin_list') }}">
+			<i class="fa fa-long-arrow-left"></i> {% trans %}maintenance.show.back{% endtrans %}
+		</a>
+	</li>
+</ul>
+{% endblock %}
