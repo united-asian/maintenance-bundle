@@ -10,12 +10,13 @@
 {% endblock %}
 
 {% block maintenance_content %}
+	{% include 'UAMMaintenanceBundle:Maintenance:templates.html.twig' %}
 	{% include 'UAMMaintenanceBundle:Maintenance:maintenance.html.twig' %}
 {% endblock %}
 
 {% block foot_script %}
 	    {{ parent() }}
-		{% include "UAMDatatablesBundle:Datatables:foot_script.html.twig" %}
+		{% include "UAMDatatablesBundle:Datatables:foot_script_with_mustache.html.twig" %}
 	<script>
 	var uammaintenances = {
 		datatables: {

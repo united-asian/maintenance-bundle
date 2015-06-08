@@ -43,7 +43,17 @@
 				{ data: "date_start" },
 				{ data: "date_end" },
 				{ data: "description" },
-				{ data: "confirmed" }
+				{ data: "confirmed" },
+				{
+					data: function( row, type, val, meta ) {
+						if ( "display" === type ) {
+							var template = $( "template.actions" ).html();
+							return Mustache.render( template, row );
+						}
+
+						return "";
+					}
+				}
 			],
 			columnDefs: [
 				{ orderable: false, targets: [ 0 ] }, // First column and last column ("actions") are not sortable

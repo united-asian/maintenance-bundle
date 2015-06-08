@@ -4,3 +4,4 @@ maintenance:
     date_end:       Date_end
     description:    Description
     confirmed:      Confirmed
+    show:           Show
