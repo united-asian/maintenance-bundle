@@ -6,6 +6,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use UAM\Bundle\DatatablesBundle\Controller\DatatablesEnabledControllerTrait;
+use UAM\Bundle\MaintenanceBundle\Propel\UAMMaintenance;
 use UAM\Bundle\MaintenanceBundle\Propel\UAMMaintenanceQuery;
 use UAM\Bundle\MaintenanceBundle\Entitymanager\MaintenanceManager;
 
@@ -49,7 +50,7 @@ class MaintenanceController extends Controller
 
         /**
      * @Route(
-     *      "maintenance/{id}",
+     *      "/{id}",
      *      name="uam_maintenance_admin_show",
      *      requirements={
      *          "id": "\d+"
@@ -58,7 +59,7 @@ class MaintenanceController extends Controller
      *
      * @Template()
      */
-    public function showAction(Request $request, Maintenance $maintenance)
+    public function showAction(Request $request, UAMMaintenance $maintenance)
     {
         return array(
             'maintenance' => $maintenance
