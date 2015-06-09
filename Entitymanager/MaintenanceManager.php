@@ -32,6 +32,10 @@ class MaintenanceManager extends AbstractEntityManager
 	protected function getSortColumns(Request $request)
 	{
 		return array(
+            1 => 'Maintenance.Id',
+            2 => 'Maintenance.DateStart',
+            3 => 'Maintenance.DateEnd',
+            5 => 'Maintenance.Confirmed'
         );
 	}
 
