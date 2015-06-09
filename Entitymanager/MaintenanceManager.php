@@ -21,7 +21,9 @@ class MaintenanceManager extends AbstractEntityManager
 	 */
 	protected function getSearchColumns(Request $request)
 	{
-		return array();
+		return array(
+            'id' => 'Maintenance.id LIKE "%d"'
+        );
 	}
 
 	/**
