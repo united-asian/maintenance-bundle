@@ -61,7 +61,7 @@
 				{ className: "actions", targets: [ 5 ] } // Set special "actions" class on cells in the last column
 			],
 			language: {
-				url: "/bundles/uamdatatables/lang" + maintenance.locale + ".json"
+				url: "/bundles/uamdatatables/lang/" + maintenance.locale + ".json"
 			},
 			orderable: true,
 			paging: true,
