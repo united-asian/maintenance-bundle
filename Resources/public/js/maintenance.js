@@ -58,7 +58,7 @@
 			columnDefs: [
 				{ orderable: false, targets: [ 0 ] }, // First column and last column ("actions") are not sortable
 				{ visible: false, targets: [ 0 ] }, // Hide the first column
-				{ className: "actions", targets: [ 5 ] } // Set special "actions" class on cells in the last column
+				{ className: "actions", targets: [ 6 ] } // Set special "actions" class on cells in the last column
 			],
 			language: {
 				url: "/bundles/uamdatatables/lang/" + maintenance.locale + ".json"
