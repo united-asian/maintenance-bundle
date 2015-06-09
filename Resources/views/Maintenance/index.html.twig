@@ -1,0 +1,34 @@
+{% extends "UAMMaintenanceBundle::base.html.twig" %}
+
+{% trans_default_domain "maintenance" %}
+
+{% block body_class %}maintenances{% endblock %}
+
+{% block head_style %}
+	{{ parent() }}
+	{% include "UAMDatatablesBundle:Datatables:head_style.html.twig" %}
+{% endblock %}
+
+{% block maintenance_content %}
+	{% block maintenance_templates %}
+		{% include 'UAMMaintenanceBundle:Maintenance:templates.html.twig' %}
+	{% endblock %}
+	{% include 'UAMMaintenanceBundle:Maintenance:maintenance.html.twig' %}
+{% endblock %}
+
+{% block foot_script %}
+	    {{ parent() }}
+		{% include "UAMDatatablesBundle:Datatables:foot_script_with_mustache.html.twig" %}
+		{% javascripts
+			'bundles/uammaintenance/js/maintenance.js'
+		%}
+		<script src="{{ asset_url }}"></script>
+		{% endjavascripts %}
+	<script>
+	var uammaintenances = {
+		datatables: {
+			ajax: "{{ path('uam_maintenance_admin_list') }}"
+		}
+	};
+	</script>
+{% endblock %}

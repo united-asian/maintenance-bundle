@@ -1,0 +1,3 @@
+_uam_maintenance_record:
+    resource: "@UAMMaintenanceBundle/Controller/MaintenanceController.php"
+    type: annotation

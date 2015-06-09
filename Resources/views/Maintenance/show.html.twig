@@ -1,0 +1,14 @@
+{% extends "UAMMaintenanceBundle::base.html.twig" %}
+
+{% trans_default_domain "maintenance" %}
+
+{% block body_class %}maintenance{% endblock %}
+
+{% block page_title %} {% trans %}maintenance.show.page_title{% endtrans %}{% endblock %}
+{% block page_nav %}
+<div class="top-nav">
+		<a href="{{ path('uam_maintenance_maintenance_index') }}">
+			<i class="fa fa-long-arrow-left"></i> {% trans %}maintenance.show.back{% endtrans %}
+		</a>
+</div>
+{% endblock %}

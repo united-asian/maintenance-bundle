@@ -1,0 +1,11 @@
+maintenance:
+    id:             Id
+    date_start:     Date_start
+    date_end:       Date_end
+    description:    Description
+    confirmed:      Confirmed
+    actions:
+        show:       Show
+    show:
+        back:       Back
+        page_title: Show

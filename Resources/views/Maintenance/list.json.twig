@@ -1,0 +1,17 @@
+{% extends "UAMDatatablesBundle:Datatables:list.json.twig" %}
+
+{% block data %}
+{% set uam_maintenance = entity %}
+{
+				"DT_RowId": "{{ 'uam_maintenance' ~ uam_maintenance.id }}",
+				"DT_RowClass": "{{ 'uam_maintenance' }}",
+				"id": "{{ uam_maintenance.id }}",
+				"date_start": "{{ uam_maintenance.dateStart|date('m/d/Y') }}",
+				"date_end": "{{ uam_maintenance.dateEnd|date('m/d/Y') }}",
+				"description": "{{ uam_maintenance.setLocale(app.request.locale).description }}",
+				"confirmed": "{{ uam_maintenance.confirmed }}",
+				"urls": {
+					"show": "{{ path('uam_maintenance_admin_show', { id: uam_maintenance.id }) }}"
+				}
+}
+{% endblock %}

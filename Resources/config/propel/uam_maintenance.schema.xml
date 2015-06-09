@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<database name="default" namespace="Model" defaultIdMethod="native">
+<database name="default" namespace="UAM\Bundle\MaintenanceBundle\Propel" defaultIdMethod="native">
     <table name="uam_maintenance" phpName="UAMMaintenance" idMethod="native">
         <column name="id"          type="integer" primaryKey="true" autoIncrement="true" required="true"/>
         <column name="date_start"  type="DATE"    required="true"/>
