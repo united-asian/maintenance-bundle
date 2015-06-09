@@ -13,7 +13,9 @@ class MaintenanceManager extends AbstractEntityManager
 	 */
 	protected function getQuery(Request $request)
 	{
-		return UAMMaintenanceQuery::create('Maintenance');
+		return UAMMaintenanceQuery::create('Maintenance')
+            ->useUAMMaintenanceI18nQuery('MaintenanceI18n')
+            ->endUse();
 	}
 
 	/**
@@ -22,7 +24,8 @@ class MaintenanceManager extends AbstractEntityManager
 	protected function getSearchColumns(Request $request)
 	{
 		return array(
-            'id' => 'Maintenance.id LIKE "%d"'
+            'id' => 'Maintenance.id LIKE "%d"',
+            'description' => 'MaintenanceI18n.Description LIKE "%%%s%%"'
         );
 	}
 
@@ -35,6 +38,7 @@ class MaintenanceManager extends AbstractEntityManager
             1 => 'Maintenance.Id',
             2 => 'Maintenance.DateStart',
             3 => 'Maintenance.DateEnd',
+            4 => 'MaintenanceI18n.Description',
             5 => 'Maintenance.Confirmed'
         );
 	}
