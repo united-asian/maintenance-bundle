@@ -31,7 +31,8 @@ class MaintenanceManager extends AbstractEntityManager
 	 */
 	protected function getSortColumns(Request $request)
 	{
-		return array();
+		return array(
+        );
 	}
 
 	/**
@@ -39,6 +40,8 @@ class MaintenanceManager extends AbstractEntityManager
 	 */
 	protected function getDefaultSortOrder(Request $request)
 	{
-		return array();
+		return array(
+        array('Maintenance.DateEnd', 'asc')
+        );
 	}
 }
