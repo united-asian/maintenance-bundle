@@ -7,7 +7,6 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use UAM\Bundle\DatatablesBundle\Controller\DatatablesEnabledControllerTrait;
 use UAM\Bundle\MaintenanceBundle\Propel\UAMMaintenance;
-use UAM\Bundle\MaintenanceBundle\Propel\UAMMaintenanceQuery;
 use UAM\Bundle\MaintenanceBundle\Entitymanager\MaintenanceManager;
 
 /**
