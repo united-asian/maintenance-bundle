@@ -19,6 +19,11 @@
 {% block foot_script %}
 	    {{ parent() }}
 		{% include "UAMDatatablesBundle:Datatables:foot_script_with_mustache.html.twig" %}
+		{% javascripts
+			'bundles/uammaintenance/js/maintenance.js'
+		%}
+		<script src="{{ asset_url }}"></script>
+		{% endjavascripts %}
 	<script>
 	var uammaintenances = {
 		datatables: {

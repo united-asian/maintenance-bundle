@@ -18,6 +18,12 @@
 		{% endblock head_script %}
 	{% block main %}
 		<div class="content {% block body_class %}{% endblock %}">
+			{% block page_nav %}{% endblock %}
+			{% block page_header %}{% spaceless %}
+				<div class="page_header">
+					<h1>{% block page_title %}{% endblock %}</h1>
+				</div>
+			{% endspaceless %}{% endblock %}
 			{% block maintenance_content %}{% endblock %}
 		</div>
 	{% endblock %}
@@ -26,7 +32,6 @@
 			{{ parent() }}
 			{% javascripts
 				'@uamdatatables_bootstrap_js'
-				'bundles/uammaintenance/js/maintenance.js'
 			%}
 		<script src="{{ asset_url }}"></script>
 			{% endjavascripts %}
