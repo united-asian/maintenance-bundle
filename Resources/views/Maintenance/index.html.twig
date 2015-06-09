@@ -10,7 +10,9 @@
 {% endblock %}
 
 {% block maintenance_content %}
-	{% include 'UAMMaintenanceBundle:Maintenance:templates.html.twig' %}
+	{% block maintenance_templates %}
+		{% include 'UAMMaintenanceBundle:Maintenance:templates.html.twig' %}
+	{% endblock %}
 	{% include 'UAMMaintenanceBundle:Maintenance:maintenance.html.twig' %}
 {% endblock %}
 

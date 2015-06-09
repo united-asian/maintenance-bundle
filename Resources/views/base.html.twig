@@ -3,10 +3,7 @@
 	{% block head_style %}
 		{{ parent() }}
 		{% stylesheets filter="cssrewrite"
-			'bundles/uamdatatables/vendor/datatables/media/css/jquery.dataTables.min.css'
-			'bundles/uamdatatables/vendor/datatables-plugins/integration/bootstrap/3/dataTables.bootstrap.css'
-			'bundles/uamdatatables/vendor/datatables-plugins/integration/font-awesome/dataTables.fontAwesome.css'
-			'bundles/uamdatatables/css/table.css'
+			'@uamdatatables_bootstrap_fa_css'
 		%}
 			<link href="{{ asset_url }}" type="text/css" rel="stylesheet" media="screen" />
 		{% endstylesheets %}
@@ -28,9 +25,7 @@
 		{% block foot_script %}
 			{{ parent() }}
 			{% javascripts
-				'bundles/uamdatatables/vendor/datatables/media/js/jquery.js'
-				'bundles/uamdatatables/vendor/datatables/media/js/jquery.dataTables.min.js'
-				'bundles/uamdatatables/vendor/datatables-plugins/integration/bootstrap/3/dataTables.bootstrap.min.js'
+				'@uamdatatables_bootstrap_js'
 				'bundles/uammaintenance/js/maintenance.js'
 			%}
 		<script src="{{ asset_url }}"></script>
