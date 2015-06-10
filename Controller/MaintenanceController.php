@@ -66,6 +66,23 @@ class MaintenanceController extends Controller
     }
 
     /**
+     * @Route("/warning")
+     * @Template()
+     */
+    public function warningAction(Request $request )
+    {
+        $current_date = date("Y/m/d");
+
+        $maintenance = \UAM\Bundle\MaintenanceBundle\Propel\UAMMaintenanceQuery::create()
+            ->filterByDateStart(array('min' => $current_date ))
+            ->filterByConfirmed($confirmed = true)
+            ->orderByDateStart('asc')
+            ->findOne();
+
+        return array('maintenance' => $maintenance);
+    }
+
+    /**
      * @inheritdoc
      */
     protected function getEntityManager()
