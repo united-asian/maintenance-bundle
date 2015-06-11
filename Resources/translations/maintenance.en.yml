@@ -9,4 +9,4 @@ maintenance:
     show:
         back:       Back
         page_title: Show
-    warning:        This app will not be available during %date_start% to %date_end%
+    warning:        This app will be unavailable during %date_start% to %date_end%
