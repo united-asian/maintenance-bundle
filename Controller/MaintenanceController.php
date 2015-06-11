@@ -81,10 +81,10 @@ class MaintenanceController extends Controller
             ->orderByDateStart('asc')
             ->findOne();
 
-        $date_start = $maintenance->getDateStart();
-        $date_end = $maintenance->getDateEnd();
 
         if ($maintenance) {
+            $date_start = $maintenance->getDateStart();
+            $date_end = $maintenance->getDateEnd();
             $this->get('session')->getFlashBag()->add(
                 'alert',
                 $this->get('translator')->trans(
