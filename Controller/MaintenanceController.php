@@ -82,9 +82,7 @@ class MaintenanceController extends Controller
             ->filterByConfirmed($confirmed = true)
             ->findOne();
 
-        $warning_status = $maintenance->getWarningStatus();
-
-        if ($maintenance && ($warning_status == true)) {
+        if ($maintenance) {
             $date_start = $maintenance->getDateStart();
             $date_end = $maintenance->getDateEnd();
 
@@ -97,9 +95,6 @@ class MaintenanceController extends Controller
                     $request->getLocale()
                 )
             );
-
-            $maintenance->setWarningStatus(false);
-            $maintenance->save();
         }
 
         return array('maintenance' => $maintenance);
