@@ -1,4 +1,5 @@
 <?php
+
 namespace UAM\Bundle\MaintenanceBundle\Controller;
 
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
@@ -77,14 +78,16 @@ class MaintenanceController extends Controller
 
         $maintenance = UAMMaintenanceQuery::create()
             ->filterByDateStart(array('min' => $current_date ))
-            ->filterByConfirmed($confirmed = true)
             ->orderByDateStart('asc')
+            ->filterByConfirmed($confirmed = true)
             ->findOne();
 
+        $warning_status = $maintenance->getWarningStatus();
 
-        if ($maintenance) {
+        if ($maintenance && ($warning_status == true)) {
             $date_start = $maintenance->getDateStart();
             $date_end = $maintenance->getDateEnd();
+
             $this->get('session')->getFlashBag()->add(
                 'alert',
                 $this->get('translator')->trans(
@@ -94,6 +97,9 @@ class MaintenanceController extends Controller
                     $request->getLocale()
                 )
             );
+
+            $maintenance->setWarningStatus(false);
+            $maintenance->save();
         }
 
         return array('maintenance' => $maintenance);
