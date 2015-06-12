@@ -49,7 +49,7 @@ class MaintenanceManager extends AbstractEntityManager
 	protected function getDefaultSortOrder(Request $request)
 	{
 		return array(
-        array('Maintenance.DateEnd', 'asc')
+        array('Maintenance.DateStart', 'asc')
         );
 	}
 }

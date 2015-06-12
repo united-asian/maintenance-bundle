@@ -1,13 +1,16 @@
 <?php
+
 namespace UAM\Bundle\MaintenanceBundle\Controller;
 
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 use UAM\Bundle\DatatablesBundle\Controller\DatatablesEnabledControllerTrait;
-use UAM\Bundle\MaintenanceBundle\Propel\UAMMaintenance;
 use UAM\Bundle\MaintenanceBundle\Entitymanager\MaintenanceManager;
+use UAM\Bundle\MaintenanceBundle\Propel\UAMMaintenance;
+use UAM\Bundle\MaintenanceBundle\Propel\UAMMaintenanceQuery;
 
 /**
  * @Route("/maintenance", name="uam_maintenance_admin")
@@ -63,6 +66,38 @@ class MaintenanceController extends Controller
         return array(
             'maintenance' => $maintenance
         );
+    }
+
+    /**
+     * @Route("/warning")
+     * @Template()
+     */
+    public function warningAction(Request $request )
+    {
+        $current_date = date("Y/m/d");
+
+        $maintenance = UAMMaintenanceQuery::create()
+            ->filterByDateStart(array('min' => $current_date ))
+            ->orderByDateStart('asc')
+            ->filterByConfirmed($confirmed = true)
+            ->findOne();
+
+        if ($maintenance) {
+            $date_start = $maintenance->getDateStart();
+            $date_end = $maintenance->getDateEnd();
+
+            $this->get('session')->getFlashBag()->add(
+                'alert',
+                $this->get('translator')->trans(
+                    'maintenance.warning',
+                    array('%date_start%' => $date_start->format('Y-M-d'),'%date_end%' => $date_end->format('Y-M-d')),
+                    'maintenance',
+                    $request->getLocale()
+                )
+            );
+        }
+
+        return array('maintenance' => $maintenance);
     }
 
     /**
