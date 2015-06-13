@@ -12,9 +12,6 @@ use UAM\Bundle\MaintenanceBundle\Entitymanager\MaintenanceManager;
 use UAM\Bundle\MaintenanceBundle\Propel\UAMMaintenance;
 use UAM\Bundle\MaintenanceBundle\Propel\UAMMaintenanceQuery;
 
-/**
- * @Route("/maintenance", name="uam_maintenance_admin")
-*/
 class MaintenanceController extends Controller
 {
     use DatatablesEnabledControllerTrait {
@@ -23,7 +20,11 @@ class MaintenanceController extends Controller
     }
 
     /**
-     * @Route("/")
+     * @Route(
+     *      "/",
+     *      name="uam_maintenance_admin_index"
+     * )
+     *
      * @Template()
      */
     public function indexAction(Request $request)
