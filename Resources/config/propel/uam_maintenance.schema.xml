@@ -10,5 +10,5 @@
             <parameter name="i18n_columns"  value="description" />
             <parameter name="locale_column" value="locale" />
         </behavior>
-   </table>
+    </table>
 </database>
