@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <database name="default" namespace="UAM\Bundle\MaintenanceBundle\Propel" defaultIdMethod="native">
-    <table name="uam_maintenance" phpName="UAMMaintenance" idMethod="native">
-        <column name="id"          type="integer" primaryKey="true" autoIncrement="true" required="true"/>
-        <column name="date_start"  type="DATE"    required="true"/>
-		<column name="date_end"    type="DATE"    required="false"/>
+	<table name="uam_maintenance" phpName="UAMMaintenance" idMethod="native">
+		<column name="id"          type="integer" primaryKey="true" autoIncrement="true" required="true"/>
+		<column name="date_start"  type="timestamp"    required="true"/>
+		<column name="date_end"    type="timestamp"    required="false"/>
 		<column name="description" type="longvarchar" required="false"/>
-        <column name="confirmed"   type="boolean" size="1" required="true" defaultValue="false" />
+		<column name="confirmed"   type="boolean" size="1" required="true" defaultValue="false" />
 		<behavior name="i18n">
-            <parameter name="i18n_columns"  value="description" />
-            <parameter name="locale_column" value="locale" />
-        </behavior>
-   </table>
+			<parameter name="i18n_columns"  value="description" />
+			<parameter name="locale_column" value="locale" />
+		</behavior>
+	</table>
 </database>
