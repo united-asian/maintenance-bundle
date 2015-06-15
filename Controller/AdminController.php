@@ -12,7 +12,7 @@ use UAM\Bundle\MaintenanceBundle\Entitymanager\MaintenanceManager;
 use UAM\Bundle\MaintenanceBundle\Propel\UAMMaintenance;
 use UAM\Bundle\MaintenanceBundle\Propel\UAMMaintenanceQuery;
 
-class MaintenanceController extends Controller
+class AdminController extends Controller
 {
     use DatatablesEnabledControllerTrait {
         indexAction as baseIndexAction;
