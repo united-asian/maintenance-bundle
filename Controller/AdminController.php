@@ -79,7 +79,7 @@ class AdminController extends Controller
      */
     public function warningAction(Request $request )
     {
-        $current_date = date("Y/m/d");
+        $current_date = date("Y/m/d H:i:s");
 
         $maintenance = MaintenanceQuery::create()
             ->filterByDateStart(array('min' => $current_date ))
@@ -95,7 +95,7 @@ class AdminController extends Controller
                 'alert',
                 $this->get('translator')->trans(
                     'maintenance.warning',
-                    array('%date_start%' => $date_start->format('Y-M-d'),'%date_end%' => $date_end->format('Y-M-d')),
+                    array('%date_start%' => $date_start->format('Y-M-d H:i:s'),'%date_end%' => $date_end->format('Y-M-d H:i:s')),
                     'maintenance',
                     $request->getLocale()
                 )
