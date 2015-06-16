@@ -9,8 +9,8 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use UAM\Bundle\DatatablesBundle\Controller\DatatablesEnabledControllerTrait;
 use UAM\Bundle\MaintenanceBundle\Propel\MaintenanceManager;
-use UAM\Bundle\MaintenanceBundle\Propel\UAMMaintenance;
-use UAM\Bundle\MaintenanceBundle\Propel\UAMMaintenanceQuery;
+use UAM\Bundle\MaintenanceBundle\Propel\Maintenance;
+use UAM\Bundle\MaintenanceBundle\Propel\MaintenanceQuery;
 
 class AdminController extends Controller
 {
@@ -62,7 +62,7 @@ class AdminController extends Controller
      *
      * @Template()
      */
-    public function showAction(Request $request, UAMMaintenance $maintenance)
+    public function showAction(Request $request, Maintenance $maintenance)
     {
         return array(
             'maintenance' => $maintenance
@@ -81,7 +81,7 @@ class AdminController extends Controller
     {
         $current_date = date("Y/m/d");
 
-        $maintenance = UAMMaintenanceQuery::create()
+        $maintenance = MaintenanceQuery::create()
             ->filterByDateStart(array('min' => $current_date ))
             ->orderByDateStart('asc')
             ->filterByConfirmed($confirmed = true)
@@ -102,7 +102,9 @@ class AdminController extends Controller
             );
         }
 
-        return array('maintenance' => $maintenance);
+        return array(
+            'maintenance' => $maintenance
+        );
     }
 
     /**

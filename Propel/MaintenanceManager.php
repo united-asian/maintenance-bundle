@@ -2,7 +2,7 @@
 
 namespace UAM\Bundle\MaintenanceBundle\Propel;
 
-use UAM\Bundle\MaintenanceBundle\Propel\UAMMaintenanceQuery;
+use UAM\Bundle\MaintenanceBundle\Propel\MaintenanceQuery;
 use Symfony\Component\HttpFoundation\Request;
 use UAM\Bundle\DatatablesBundle\Propel\AbstractEntityManager;
 
@@ -13,9 +13,9 @@ class MaintenanceManager extends AbstractEntityManager
 	 */
 	protected function getQuery(Request $request)
 	{
-		return UAMMaintenanceQuery::create('Maintenance')
-            ->useUAMMaintenanceI18nQuery('MaintenanceI18n')
-            ->filterByLocale($request->getLocale())
+		return MaintenanceQuery::create()
+            ->useMaintenanceI18nQuery('maintenanceI18n')
+                ->filterByLocale($request->getLocale())
             ->endUse();
 	}
 
@@ -25,8 +25,8 @@ class MaintenanceManager extends AbstractEntityManager
 	protected function getSearchColumns(Request $request)
 	{
 		return array(
-            'id' => 'Maintenance.id LIKE "%d"',
-            'description' => 'MaintenanceI18n.Description LIKE "%%%s%%"'
+            'id' => 'uam_maintenance.id LIKE "%d"',
+            'description' => 'maintenanceI18n.Description LIKE "%%%s%%"'
         );
 	}
 
@@ -36,11 +36,11 @@ class MaintenanceManager extends AbstractEntityManager
 	protected function getSortColumns(Request $request)
 	{
 		return array(
-            1 => 'Maintenance.Id',
-            2 => 'Maintenance.DateStart',
-            3 => 'Maintenance.DateEnd',
-            4 => 'MaintenanceI18n.Description',
-            5 => 'Maintenance.Confirmed'
+            1 => 'uam_maintenance.Id',
+            2 => 'uam_maintenance.DateStart',
+            3 => 'uam_maintenance.DateEnd',
+            4 => 'maintenanceI18n.Description',
+            5 => 'uam_maintenance.Confirmed'
         );
 	}
 
@@ -50,7 +50,7 @@ class MaintenanceManager extends AbstractEntityManager
 	protected function getDefaultSortOrder(Request $request)
 	{
 		return array(
-        array('Maintenance.DateStart', 'asc')
+        array('uam_maintenance.DateStart', 'asc')
         );
 	}
 }
