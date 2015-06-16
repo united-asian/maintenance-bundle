@@ -1,41 +1,45 @@
 {% extends "UAMBootstrapBundle::stickyfooter.html.twig" %}
 
-	{% block head_style %}
-		{{ parent() }}
-		{% stylesheets filter="cssrewrite"
-			'@uamdatatables_bootstrap_fa_css'
-		%}
-			<link href="{{ asset_url }}" type="text/css" rel="stylesheet" media="screen" />
-		{% endstylesheets %}
-	{% endblock %}
-		{% block head_script %}
-			{{ parent() }}
-			<script>
-				var maintenance = {
-					locale: "{{ app.request.locale }}"
-				};
-			</script>
-		{% endblock head_script %}
-	{% block main %}
-		<div class="content {% block body_class %}{% endblock %}">
-			{% block flash %}
-				{% include 'UAMBootstrapBundle::flash.html.twig'%}
-			{% endblock %}
-			{% block page_nav %}{% endblock %}
-			{% block page_header %}{% spaceless %}
-				<div class="page_header">
-					<h1>{% block page_title %}{% endblock %}</h1>
-				</div>
-			{% endspaceless %}{% endblock %}
-			{% block maintenance_content %}{% endblock %}
-		</div>
-	{% endblock %}
+{% block head_style %}
+	{{ parent() }}
+	{% stylesheets filter="cssrewrite"
+		'@uamdatatables_bootstrap_fa_css'
+	%}
+		<link href="{{ asset_url }}" type="text/css" rel="stylesheet" media="screen" />
+	{% endstylesheets %}
+{% endblock %}
 
-		{% block foot_script %}
-			{{ parent() }}
-			{% javascripts
-				'@uamdatatables_bootstrap_js'
-			%}
-		<script src="{{ asset_url }}"></script>
-			{% endjavascripts %}
-		{% endblock foot_script %}
+{% block head_script %}
+	{{ parent() }}
+	<script>
+	var maintenance = {
+		locale: "{{ app.request.locale }}"
+	};
+	</script>
+{% endblock head_script %}
+
+{% block main %}
+	<div class="content {% block body_class %}{% endblock %}">
+		{% block flash %}
+			{% include 'UAMBootstrapBundle::flash.html.twig'%}
+		{% endblock %}
+
+		{% block page_nav %}{% endblock %}
+
+		{% block page_header %}{% spaceless %}
+		<div class="page_header">
+			<h1>{% block page_title %}{% endblock %}</h1>
+		</div>
+		{% endspaceless %}{% endblock %}
+		{% block maintenance_content %}{% endblock %}
+	</div>
+{% endblock %}
+
+{% block foot_script %}
+	{{ parent() }}
+	{% javascripts
+		'@uamdatatables_bootstrap_js'
+	%}
+	<script src="{{ asset_url }}"></script>
+		{% endjavascripts %}
+{% endblock foot_script %}
