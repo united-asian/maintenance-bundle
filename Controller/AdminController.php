@@ -108,6 +108,19 @@ class AdminController extends Controller
     }
 
     /**
+     * @Route(
+     *      "/progress",
+     *      name="uam_maintenance_admin_progress"
+     * )
+     *
+     * @Template()
+     */
+    public function progressAction(Request $request )
+    {
+        return array();
+    }
+
+    /**
      * @inheritdoc
      */
     protected function getEntityManager()
