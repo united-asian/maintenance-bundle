@@ -70,7 +70,11 @@ class AdminController extends Controller
     }
 
     /**
-     * @Route("/warning")
+     * @Route(
+     *      "/warning",
+     *      name="uam_maintenance_admin_warning"
+     * )
+     *
      * @Template()
      */
     public function warningAction(Request $request )
