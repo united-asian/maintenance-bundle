@@ -67,6 +67,7 @@
 			paging: true,
 			processing: true,
 			serverSide: true, // set datatables to use ajax to display content
+			searching:  false,
 			stripeClasses: []
 		}
 	};
