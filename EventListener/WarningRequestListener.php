@@ -26,18 +26,20 @@ class WarningRequestListener
             ->filterByConfirmed($confirmed = true)
             ->findOne();
 
-        $date_start = $maintenance->getDateStart();
-        $date_end = $maintenance->getDateEnd();
+        if ($maintenance) {
+            $date_start = $maintenance->getDateStart();
+            $date_end = $maintenance->getDateEnd();
 
-        if (($current_date >= $date_start ) && ($current_date <= $date_end)) {
-            $route = 'uam_maintenance_admin_progress';
+            if (($current_date >= $date_start ) && ($current_date <= $date_end)) {
+                $route = 'uam_maintenance_admin_progress';
 
-            $request_url = $event->getRequest()->getUri();
+                $request_url = $event->getRequest()->getUri();
 
-            $url = $this->router->generate($route, array(), true);
+                $url = $this->router->generate($route, array(), true);
 
-            if( $request_url != $url) {
-                $event->setResponse(new RedirectResponse($url));
+                if( $request_url != $url) {
+                    $event->setResponse(new RedirectResponse($url));
+                }
             }
         }
     }
