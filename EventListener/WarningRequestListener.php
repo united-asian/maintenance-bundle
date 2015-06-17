@@ -29,7 +29,6 @@ class WarningRequestListener
         $date_start = $maintenance->getDateStart();
         $date_end = $maintenance->getDateEnd();
 
-
         if (($current_date >= $date_start ) && ($current_date <= $date_end)) {
             $route = 'uam_maintenance_admin_progress';
 
