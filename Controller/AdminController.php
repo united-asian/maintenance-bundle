@@ -2,6 +2,7 @@
 
 namespace UAM\Bundle\MaintenanceBundle\Controller;
 
+use DateTime;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -76,12 +77,12 @@ class AdminController extends Controller
      *
      * @Template()
      */
-    public function warningAction(Request $request )
+    public function warningAction(Request $request)
     {
         $current_date = date("Y/m/d H:i:s");
 
         $maintenance = MaintenanceQuery::create()
-            ->filterByDateStart(array('min' => $current_date ))
+            ->filterByDateStart(array('min' => $current_date))
             ->orderByDateStart('asc')
             ->filterByConfirmed($confirmed = true)
             ->findOne();
@@ -114,9 +115,34 @@ class AdminController extends Controller
      *
      * @Template()
      */
-    public function progressAction(Request $request )
+    public function progressAction(Request $request)
     {
-        return array();
+        $current_date = new DateTime();
+
+        $maintenance = MaintenanceQuery::create()
+            ->filterByDateStart(array('max' => $current_date))
+            ->orderByDateStart('desc')
+            ->filterByConfirmed($confirmed = true)
+            ->findOne();
+
+        $maintenance->setLocale($request->getLocale());
+
+        $description = $maintenance->getDescription();
+        $date_end = $maintenance->getDateEnd();
+
+        $this->get('session')->getFlashBag()->add(
+            'alert',
+            $this->get('translator')->trans(
+                'maintenance.progress',
+                array('%description%' => $description,'%date_end%' => $date_end->format('Y-M-d H:i:s')),
+                'maintenance',
+                $request->getLocale()
+            )
+        );
+
+        return array(
+            'maintenance' => $maintenance
+        );
     }
 
     /**
