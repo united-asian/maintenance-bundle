@@ -37,7 +37,7 @@ class WarningRequestListener
 
                 $url = $this->router->generate($route, array(), true);
 
-                if($request_url != $url) {
+                if ($request_url != $url) {
                     $event->setResponse(new RedirectResponse($url));
                 }
             }
