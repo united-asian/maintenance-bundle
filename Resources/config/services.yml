@@ -1,5 +1,7 @@
 services:
     warning.listener:
         class: UAM\Bundle\MaintenanceBundle\EventListener\WarningRequestListener
+        arguments:
+            - @router
         tags:
             - { name: kernel.event_listener, event: kernel.request, method: onKernelRequest }

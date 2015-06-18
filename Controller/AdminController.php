@@ -2,14 +2,14 @@
 
 namespace UAM\Bundle\MaintenanceBundle\Controller;
 
+use DateTime;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Response;
 use UAM\Bundle\DatatablesBundle\Controller\DatatablesEnabledControllerTrait;
-use UAM\Bundle\MaintenanceBundle\Propel\MaintenanceManager;
 use UAM\Bundle\MaintenanceBundle\Propel\Maintenance;
+use UAM\Bundle\MaintenanceBundle\Propel\MaintenanceManager;
 use UAM\Bundle\MaintenanceBundle\Propel\MaintenanceQuery;
 
 class AdminController extends Controller
@@ -77,12 +77,12 @@ class AdminController extends Controller
      *
      * @Template()
      */
-    public function warningAction(Request $request )
+    public function warningAction(Request $request)
     {
         $current_date = date("Y/m/d H:i:s");
 
         $maintenance = MaintenanceQuery::create()
-            ->filterByDateStart(array('min' => $current_date ))
+            ->filterByDateStart(array('min' => $current_date))
             ->orderByDateStart('asc')
             ->filterByConfirmed($confirmed = true)
             ->findOne();
@@ -101,6 +101,44 @@ class AdminController extends Controller
                 )
             );
         }
+
+        return array(
+            'maintenance' => $maintenance
+        );
+    }
+
+    /**
+     * @Route(
+     *      "/progress",
+     *      name="uam_maintenance_admin_progress"
+     * )
+     *
+     * @Template()
+     */
+    public function progressAction(Request $request)
+    {
+        $current_date = new DateTime();
+
+        $maintenance = MaintenanceQuery::create()
+            ->filterByDateStart(array('max' => $current_date))
+            ->orderByDateStart('desc')
+            ->filterByConfirmed($confirmed = true)
+            ->findOne();
+
+        $maintenance->setLocale($request->getLocale());
+
+        $description = $maintenance->getDescription();
+        $date_end = $maintenance->getDateEnd();
+
+        $this->get('session')->getFlashBag()->add(
+            'alert',
+            $this->get('translator')->trans(
+                'maintenance.progress',
+                array('%description%' => $description,'%date_end%' => $date_end->format('Y-M-d H:i:s')),
+                'maintenance',
+                $request->getLocale()
+            )
+        );
 
         return array(
             'maintenance' => $maintenance

@@ -10,3 +10,4 @@ maintenance:
         back:       Back
         page_title: Show
     warning:        This app will be unavailable during %date_start% to %date_end%
+    progress:       <center><strong>SORRY FOR YOUR INCONVENIENCE:</strong></br>This App is under maintenance until %date_end%.</br>  <br>Description: "%description%" </br></center%%>
