@@ -1,45 +1,52 @@
-{% extends "UAMBootstrapBundle::stickyfooter.html.twig" %}
+{% block uam_maintenance_html_tag %}
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+{% endblock uam_maintenance_html_tag %}
 
-{% block head_style %}
-	{{ parent() }}
-	{% stylesheets filter="cssrewrite"
-		'@uamdatatables_bootstrap_fa_css'
-	%}
+{% block uam_maintenance_head %}
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<title>{% block title %}{% endblock %}</title>
+	<meta name="description" content="{% block description %}{% endblock %}">
+	<meta name="viewport" content="{% block viewport %}width=device-width, initial-scale=1{% endblock %}">
+
+	{% block uam_maintenance_head_style %}
+                {% stylesheets filter="cssrewrite"
+                        '@uamdatatables_bootstrap_fa_css'
+                %}
 		<link href="{{ asset_url }}" type="text/css" rel="stylesheet" media="screen" />
 	{% endstylesheets %}
-{% endblock %}
+        {% endblock uam_maintenance_head_style %}
 
-{% block head_script %}
-	{{ parent() }}
-	<script>
-	var maintenance = {
-		locale: "{{ app.request.locale }}"
-	};
-	</script>
-{% endblock head_script %}
+	{% block uam_maintenance_head_script %}
+                <script>
+                var maintenance = {
+                        locale: "{{ app.request.locale }}"
+                };
+                </script>
+        {% endblock uam_maintenance_head_script %}
+</head>
+{% endblock uam_maintenance_head %}
 
-{% block main %}
-	<div class="content {% block body_class %}{% endblock %}">
+{% block uam_maintenance_body %}
+        <div class="content {% block uam_maintenance_body_class %}{% endblock %}">
 		{% block flash %}
 			{% include 'UAMBootstrapBundle::flash.html.twig'%}
 		{% endblock %}
-
-		{% block page_nav %}{% endblock %}
-
-		{% block page_header %}{% spaceless %}
-		<div class="page_header">
-			<h1>{% block page_title %}{% endblock %}</h1>
-		</div>
-		{% endspaceless %}{% endblock %}
-		{% block maintenance_content %}{% endblock %}
+		{% block uam_maintenance_content %}{% endblock %}
 	</div>
 {% endblock %}
 
-{% block foot_script %}
-	{{ parent() }}
-	{% javascripts
-		'@uamdatatables_bootstrap_js'
-	%}
+{% block uam_maintenance_foot_script %}
+{% javascripts
+	'@uamdatatables_bootstrap_js'
+	'bundles/uambootstrap/vendor/jquery/dist/jquery.min.js'
+%}
 	<script src="{{ asset_url }}"></script>
-		{% endjavascripts %}
-{% endblock foot_script %}
+{% endjavascripts %}
+{% endblock uam_maintenance_foot_script %}
+</html>
