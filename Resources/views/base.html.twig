@@ -33,6 +33,7 @@
 {% endblock uam_maintenance_head %}
 
 {% block uam_maintenance_body %}
+<body>
         <div class="content {% block uam_maintenance_body_class %}{% endblock %}">
 		{% block uam_maintenance_content %}{% endblock %}
 	</div>
@@ -50,4 +51,5 @@
 	<script src="{{ asset_url }}"></script>
 {% endjavascripts %}
 {% endblock uam_maintenance_foot_script %}
+</body>
 </html>
