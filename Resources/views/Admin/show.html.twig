@@ -2,10 +2,10 @@
 
 {% trans_default_domain "maintenance" %}
 
-{% block body_class %}maintenance{% endblock %}
+{% block uam_maintenance_body_class %}maintenance{% endblock %}
 
-{% block page_title %} {% trans %}maintenance.show.page_title{% endtrans %}{% endblock %}
-{% block page_nav %}
+{% block uam_maintenance_page_title %} {% trans %}maintenance.show.page_title{% endtrans %}{% endblock %}
+{% block uam_maintenance_page_nav %}
 <div class="top-nav">
 		<a href="{{ path('uam_maintenance_admin_index') }}">
 			<i class="fa fa-long-arrow-left"></i> {% trans %}maintenance.show.back{% endtrans %}

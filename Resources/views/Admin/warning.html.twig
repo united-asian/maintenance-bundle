@@ -1,1 +1,5 @@
-{% extends "UAMMaintenanceBundle::base.html.twig" %}
+{% for flashMessage in app.session.flashbag.get('alert') %}
+    <div class="flash-alert">
+        {{ flashMessage }}
+    </div>
+{% endfor %}

@@ -2,28 +2,28 @@
 
 {% trans_default_domain "maintenance" %}
 
-{% block body_class %}maintenances{% endblock %}
+{% block uam_maintenance_body_class %}maintenances{% endblock %}
 
-{% block head_style %}
+{% block uam_maintenance_head_style %}
 	{{ parent() }}
 	{% include "UAMDatatablesBundle:Datatables:head_style.html.twig" %}
 {% endblock %}
 
-{% block maintenance_content %}
+{% block uam_maintenance_content %}
 	{% block maintenance_templates %}
 		{% include 'UAMMaintenanceBundle:Admin:templates.html.twig' %}
 	{% endblock %}
 	{% include 'UAMMaintenanceBundle:Admin:maintenance.html.twig' %}
 {% endblock %}
 
-{% block foot_script %}
-		{{ parent() }}
-		{% include "UAMDatatablesBundle:Datatables:foot_script_with_mustache.html.twig" %}
-		{% javascripts
-			'bundles/uammaintenance/js/maintenance.js'
-		%}
-		<script src="{{ asset_url }}"></script>
-		{% endjavascripts %}
+{% block uam_maintenance_foot_script %}
+        {{ parent() }}
+	{% include "UAMDatatablesBundle:Datatables:foot_script_with_mustache.html.twig" %}
+	{% javascripts
+		'bundles/uammaintenance/js/maintenance.js'
+	%}
+            <script src="{{ asset_url }}"></script>
+	{% endjavascripts %}
 	<script>
 	var uammaintenances = {
 		datatables: {
