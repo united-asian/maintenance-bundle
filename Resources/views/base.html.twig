@@ -18,15 +18,15 @@
                 {% stylesheets filter="cssrewrite"
                         '@uamdatatables_bootstrap_fa_css'
                 %}
-		<link href="{{ asset_url }}" type="text/css" rel="stylesheet" media="screen" />
+                        <link href="{{ asset_url }}" type="text/css" rel="stylesheet" media="screen" />
                 {% endstylesheets %}
         {% endblock uam_maintenance_head_style %}
 
 	{% block uam_maintenance_head_script %}
                 <script>
-                var maintenance = {
-                        locale: "{{ app.request.locale }}"
-                };
+                        var maintenance = {
+                                locale: "{{ app.request.locale }}"
+                        };
                 </script>
         {% endblock uam_maintenance_head_script %}
 </head>
