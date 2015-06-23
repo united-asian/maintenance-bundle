@@ -19,7 +19,7 @@
                         '@uamdatatables_bootstrap_fa_css'
                 %}
 		<link href="{{ asset_url }}" type="text/css" rel="stylesheet" media="screen" />
-	{% endstylesheets %}
+                {% endstylesheets %}
         {% endblock uam_maintenance_head_style %}
 
 	{% block uam_maintenance_head_script %}
@@ -36,6 +36,10 @@
         <div class="content {% block uam_maintenance_body_class %}{% endblock %}">
 		{% block uam_maintenance_content %}{% endblock %}
 	</div>
+        
+        {% block uam_maintenance_page_title %}{% endblock %}
+        {% block uam_maintenance_page_nav %}{% endblock %}
+        
 {% endblock %}
 
 {% block uam_maintenance_foot_script %}
