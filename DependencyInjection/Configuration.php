@@ -12,18 +12,21 @@ use Symfony\Component\Config\Definition\ConfigurationInterface;
  */
 class Configuration implements ConfigurationInterface
 {
-	/**
-	 * {@inheritdoc}
-	 */
-	public function getConfigTreeBuilder()
-	{
-		$treeBuilder = new TreeBuilder();
-		$rootNode = $treeBuilder->root('uam_maintenance');
+    /**
+     * {@inheritdoc}
+     */
+    public function getConfigTreeBuilder()
+    {
+        $treeBuilder = new TreeBuilder();
+        $rootNode = $treeBuilder->root('uam_maintenance');
 
-		// Here you should define the parameters that are allowed to
-		// configure your bundle. See the documentation linked above for
-		// more information on that topic.
+        $rootNode
+            ->children()
+                ->integerNode('warning_delay')
+                    ->defaultValue(15)
+                ->end()
+            ->end();
 
-		return $treeBuilder;
-	}
+        return $treeBuilder;
+    }
 }
