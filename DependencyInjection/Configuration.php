@@ -22,7 +22,7 @@ class Configuration implements ConfigurationInterface
 
         $rootNode
             ->children()
-                ->integerNode('warning_delay')
+                ->scalarNode('warning_delay')
                     ->defaultValue(15)
                 ->end()
             ->end();
