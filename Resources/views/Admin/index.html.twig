@@ -17,12 +17,12 @@
 {% endblock %}
 
 {% block uam_maintenance_foot_script %}
-        {{ parent() }}
+		{{ parent() }}
 	{% include "UAMDatatablesBundle:Datatables:foot_script_with_mustache.html.twig" %}
 	{% javascripts
 		'bundles/uammaintenance/js/maintenance.js'
 	%}
-            <script src="{{ asset_url }}"></script>
+			<script src="{{ asset_url }}"></script>
 	{% endjavascripts %}
 	<script>
 	var uammaintenances = {
