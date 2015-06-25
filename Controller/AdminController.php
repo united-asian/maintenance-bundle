@@ -97,7 +97,7 @@ class AdminController extends Controller
                     $this->get('translator')->trans(
                         'maintenance.warning',
                         array('%date_start%' => $date_start->format('Y-M-d H:i:s'),'%date_end%' => $date_end->format('Y-M-d H:i:s')),
-                        'maintenance',
+                        'UAMMaintenanceBundle',
                         $request->getLocale()
                     )
                 );
@@ -137,7 +137,7 @@ class AdminController extends Controller
             $this->get('translator')->trans(
                 'maintenance.progress',
                 array('%description%' => $description,'%date_end%' => $date_end->format('Y-M-d H:i:s')),
-                'maintenance',
+                'UAMMaintenanceBundle',
                 $request->getLocale()
             )
         );
