@@ -11,7 +11,11 @@ use UAM\Bundle\DatatablesBundle\Controller\DatatablesEnabledControllerTrait;
 use UAM\Bundle\MaintenanceBundle\Propel\Maintenance;
 use UAM\Bundle\MaintenanceBundle\Propel\MaintenanceManager;
 use UAM\Bundle\MaintenanceBundle\Propel\MaintenanceQuery;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 
+/**
+ * @Security("is_granted('ROLE_UAM_MAINTENANCE')")
+ */
 class AdminController extends Controller
 {
     use DatatablesEnabledControllerTrait {
