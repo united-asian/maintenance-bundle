@@ -1,2 +1,4 @@
-## YAML Template.
----
+_uam_maintenance:
+    resource: "@UAMMaintenanceBundle/Controller/MaintenanceController.php"
+    type: annotation
+    prefix: /maintenance

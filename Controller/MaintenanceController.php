@@ -13,66 +13,13 @@ use UAM\Bundle\MaintenanceBundle\Propel\MaintenanceManager;
 use UAM\Bundle\MaintenanceBundle\Propel\MaintenanceQuery;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 
-class AdminController extends Controller
+class MaintenanceController extends Controller
 {
     use DatatablesEnabledControllerTrait {
         indexAction as baseIndexAction;
         listAction as baseListAction;
     }
 
-    /**
-     * @Route(
-     *      "/",
-     *      name="uam_maintenance_admin_index"
-     * )
-     *
-     * @Template()
-     */
-    public function indexAction(Request $request)
-    {
-        return $this->baseIndexAction($request);
-    }
-
-   /**
-    * @Route(
-    *       "/list",
-    *       name="uam_maintenance_admin_list",
-    *       requirements={
-    *           "_format": "json"
-    *       },
-    *       defaults={
-    *           "_format": "json"
-    *       }
-    * )
-    *
-    * @Template()
-    */
-    public function listAction(Request $request)
-    {
-        return $this->baseListAction($request);
-    }
-
-        /**
-     * @Route(
-     *      "/{id}",
-     *      name="uam_maintenance_admin_show",
-     *      requirements={
-     *          "id": "\d+"
-     *      }
-     * )
-     *
-     * @Template()
-     */
-    public function showAction(Request $request, Maintenance $maintenance)
-    {
-        return array(
-            'maintenance' => $maintenance
-        );
-    }
-
-    /**
-     * @Template()
-     */
     public function warningAction(Request $request)
     {
         $current_date = new DateTime('now');
@@ -104,44 +51,6 @@ class AdminController extends Controller
                 );
             }
         }
-
-        return array(
-            'maintenance' => $maintenance
-        );
-    }
-
-    /**
-     * @Route(
-     *      "/progress",
-     *      name="uam_maintenance_admin_progress"
-     * )
-     *
-     * @Template()
-     */
-    public function progressAction(Request $request)
-    {
-        $current_date = new DateTime();
-
-        $maintenance = MaintenanceQuery::create()
-            ->filterByDateStart(array('max' => $current_date))
-            ->orderByDateStart('desc')
-            ->filterByConfirmed($confirmed = true)
-            ->findOne();
-
-        $maintenance->setLocale($request->getLocale());
-
-        $description = $maintenance->getDescription();
-        $date_end = $maintenance->getDateEnd();
-
-        $this->get('session')->getFlashBag()->add(
-            'alert',
-            $this->get('translator')->trans(
-                'maintenance.progress',
-                array('%description%' => $description,'%date_end%' => $date_end->format('Y-M-d H:i:s')),
-                'UAMMaintenanceBundle',
-                $request->getLocale()
-            )
-        );
 
         return array(
             'maintenance' => $maintenance
