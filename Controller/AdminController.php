@@ -71,46 +71,6 @@ class AdminController extends Controller
     }
 
     /**
-     * @Template()
-     */
-    public function warningAction(Request $request)
-    {
-        $current_date = new DateTime('now');
-
-        $maintenance = MaintenanceQuery::create()
-            ->filterByDateStart(array('min' => $current_date))
-            ->orderByDateStart('asc')
-            ->filterByConfirmed($confirmed = true)
-            ->findOne();
-
-        if ($maintenance) {
-            $date_start = $maintenance->getDateStart();
-            $date_end = $maintenance->getDateEnd();
-
-            $warning_delay = $this->container->getParameter('uam_maintenance.warning_delay');
-            
-            $warning_delay_test = date_diff($date_start, $current_date, true);
-            $warning_delay_test = $warning_delay_test->format('%R%a days');
-            
-            if($warning_delay_test <= $warning_delay) {
-                $this->get('session')->getFlashBag()->add(
-                    'alert',
-                    $this->get('translator')->trans(
-                        'maintenance.warning',
-                        array('%date_start%' => $date_start->format('Y-M-d H:i:s'),'%date_end%' => $date_end->format('Y-M-d H:i:s')),
-                        'UAMMaintenanceBundle',
-                        $request->getLocale()
-                    )
-                );
-            }
-        }
-
-        return array(
-            'maintenance' => $maintenance
-        );
-    }
-
-    /**
      * @Route(
      *      "/progress",
      *      name="uam_maintenance_admin_progress"

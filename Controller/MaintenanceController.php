@@ -20,6 +20,9 @@ class MaintenanceController extends Controller
         listAction as baseListAction;
     }
 
+    /**
+     * @Template()
+     */
     public function warningAction(Request $request)
     {
         $current_date = new DateTime('now');
