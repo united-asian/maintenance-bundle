@@ -26,7 +26,7 @@ class WarningRequestListener
             ->filterByConfirmed(true)
             ->findOne();
 
-        
+
         if ($maintenance) {
             $route = 'uam_maintenance_progress';
 
