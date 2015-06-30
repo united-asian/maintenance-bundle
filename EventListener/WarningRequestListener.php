@@ -21,25 +21,20 @@ class WarningRequestListener
         $current_date = new DateTime();
 
         $maintenance = MaintenanceQuery::create()
-            ->filterByDateStart(array('max' => $current_date))
-            ->orderByDateStart('desc')
-            ->filterByConfirmed($confirmed = true)
+            ->filterByDateStart(array("max" => $current_date))
+            ->filterByDateEnd(array("min" => $current_date))
+            ->filterByConfirmed(true)
             ->findOne();
 
+
         if ($maintenance) {
-            $date_start = $maintenance->getDateStart();
-            $date_end = $maintenance->getDateEnd();
+            $route = 'uam_maintenance_progress';
 
-            if (($current_date >= $date_start) && ($current_date <= $date_end)) {
-                $route = 'uam_maintenance_admin_progress';
+            $request_url = $event->getRequest()->getUri();
+            $url = $this->router->generate($route, array(), true);
 
-                $request_url = $event->getRequest()->getUri();
-
-                $url = $this->router->generate($route, array(), true);
-
-                if ($request_url != $url) {
-                    $event->setResponse(new RedirectResponse($url));
-                }
+            if ($request_url != $url) {
+                $event->setResponse(new RedirectResponse($url));
             }
         }
     }

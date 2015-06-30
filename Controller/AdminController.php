@@ -71,44 +71,6 @@ class AdminController extends Controller
     }
 
     /**
-     * @Route(
-     *      "/progress",
-     *      name="uam_maintenance_admin_progress"
-     * )
-     *
-     * @Template()
-     */
-    public function progressAction(Request $request)
-    {
-        $current_date = new DateTime();
-
-        $maintenance = MaintenanceQuery::create()
-            ->filterByDateStart(array('max' => $current_date))
-            ->orderByDateStart('desc')
-            ->filterByConfirmed($confirmed = true)
-            ->findOne();
-
-        $maintenance->setLocale($request->getLocale());
-
-        $description = $maintenance->getDescription();
-        $date_end = $maintenance->getDateEnd();
-
-        $this->get('session')->getFlashBag()->add(
-            'alert',
-            $this->get('translator')->trans(
-                'maintenance.progress',
-                array('%description%' => $description,'%date_end%' => $date_end->format('Y-M-d H:i:s')),
-                'UAMMaintenanceBundle',
-                $request->getLocale()
-            )
-        );
-
-        return array(
-            'maintenance' => $maintenance
-        );
-    }
-
-    /**
      * @inheritdoc
      */
     protected function getEntityManager()
