@@ -50,7 +50,7 @@ class AdminController extends Controller
         return $this->baseListAction($request);
     }
 
-        /**
+    /**
      * @Route(
      *      "/{id}",
      *      name="uam_maintenance_admin_show",
