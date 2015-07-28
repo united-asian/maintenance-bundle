@@ -7,19 +7,11 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
-use UAM\Bundle\DatatablesBundle\Controller\DatatablesEnabledControllerTrait;
-use UAM\Bundle\MaintenanceBundle\Propel\Maintenance;
-use UAM\Bundle\MaintenanceBundle\Propel\MaintenanceManager;
 use UAM\Bundle\MaintenanceBundle\Propel\MaintenanceQuery;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 
 class MaintenanceController extends Controller
 {
-    use DatatablesEnabledControllerTrait {
-        indexAction as baseIndexAction;
-        listAction as baseListAction;
-    }
-
     /**
      * @Template()
      */
@@ -38,10 +30,10 @@ class MaintenanceController extends Controller
             $date_end = $maintenance->getDateEnd();
 
             $warning_delay = $this->container->getParameter('uam_maintenance.warning_delay');
-            
+
             $warning_delay_test = date_diff($date_start, $current_date, true);
             $warning_delay_test = $warning_delay_test->format('%R%a days');
-            
+
             if($warning_delay_test <= $warning_delay) {
                 $this->get('session')->getFlashBag()->add(
                     'alert',
@@ -59,7 +51,7 @@ class MaintenanceController extends Controller
             'maintenance' => $maintenance
         );
     }
-    
+
      /**
      * @Route(
      *      "/progress",
@@ -96,14 +88,5 @@ class MaintenanceController extends Controller
         return array(
             'maintenance' => $maintenance
         );
-    }
-
-
-    /**
-     * @inheritdoc
-     */
-    protected function getEntityManager()
-    {
-        return new MaintenanceManager();
     }
 }
