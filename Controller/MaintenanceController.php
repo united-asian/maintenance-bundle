@@ -35,7 +35,7 @@ class MaintenanceController extends Controller
             $date_end = $maintenance->getDateEnd();
 
             $this->get('session')->getFlashBag()->add(
-                'warning',
+                'alert',
                 $this->get('translator')->trans(
                     'maintenance.warning',
                     array('%date_start%' => $date_start->format('Y-M-d H:i:s'),'%date_end%' => $date_end->format('Y-M-d H:i:s')),

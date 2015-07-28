@@ -16,7 +16,7 @@
 
 			{% block uam_maintenance_head_style %}
 				{% stylesheets filter="cssrewrite"
-						'@uamdatatables_bootstrap_fa_css'
+					'bundles/uammaintenance/vendor/bootstrap/dist/css/bootstrap.min.css'
 				%}
 				<link href="{{ asset_url }}" type="text/css" rel="stylesheet" media="screen" />
 				{% endstylesheets %}
@@ -45,8 +45,8 @@
 
 {% block uam_maintenance_foot_script %}
 	{% javascripts
-	'@uamdatatables_bootstrap_js'
-	'bundles/uammaintenance/vendor/jquery/dist/jquery.min.js'
+		'bundles/uammaintenance/vendor/jquery/dist/jquery.min.js'
+		'bundles/uammaintenance/vendor/bootstrap/dist/css/bootstrap.min.js'
 	%}
 	<script src="{{ asset_url }}"></script>
 	{% endjavascripts %}
