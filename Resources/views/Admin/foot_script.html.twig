@@ -1,0 +1,32 @@
+<script>
+	var uamdatatables = {
+		ajax: {
+			url: "{{ path('uam_maintenance_admin_list') }}"
+		},
+
+		columns: [
+			{
+				data: null,
+				orderable: false,
+				visible: false
+			},
+			{ data: "id" },
+			{ data: "date_start" },
+			{ data: "date_end" },
+			{ data: "description" },
+			{ data: "confirmed" },
+			{
+				data: function( row, type, val, meta ) {
+					if ( "display" === type ) {
+						var template = $( "template.actions" ).html();
+						return Mustache.render( template, row );
+					}
+
+					return "";
+				},
+				orderable: false,
+				className: "actions"
+			}
+		],
+	};
+</script>
