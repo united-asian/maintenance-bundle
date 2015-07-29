@@ -1,55 +1,52 @@
 {% block uam_maintenance_html_tag %}
-	<!DOCTYPE html>
-	<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
-	<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
-	<!--[if IE 8]>     	<html class="no-js lt-ie9"> <![endif]-->
-	<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
-	{% endblock uam_maintenance_html_tag %}
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>     	<html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+{% endblock uam_maintenance_html_tag %}
 
-	{% block uam_maintenance_head %}
-		<head>
-			<meta charset="utf-8">
-			<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-			<title>{% block title %}{% endblock %}</title>
-			<meta name="description" content="{% block description %}{% endblock %}">
-			<meta name="viewport" content="{% block viewport %}width=device-width, initial-scale=1{% endblock %}">
+{% block uam_maintenance_head %}
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<title>{% block title %}{% endblock %}</title>
+	<meta name="description" content="{% block description %}{% endblock %}">
+	<meta name="viewport" content="{% block viewport %}width=device-width, initial-scale=1{% endblock %}">
 
-			{% block uam_maintenance_head_style %}
-				{% stylesheets filter="cssrewrite"
-					'bundles/uammaintenance/vendor/bootstrap/dist/css/bootstrap.min.css'
-				%}
-				<link href="{{ asset_url }}" type="text/css" rel="stylesheet" media="screen" />
-				{% endstylesheets %}
-			{% endblock uam_maintenance_head_style %}
+	{% block uam_maintenance_head_style %}
+	{% endblock uam_maintenance_head_style %}
 
-			{% block uam_maintenance_head_script %}
-				<script>
-					var maintenance = {
-						locale: "{{ app.request.locale }}"
-					};
-				</script>
-			{% endblock uam_maintenance_head_script %}
-		</head>
-	{% endblock uam_maintenance_head %}
+	{% block uam_maintenance_head_script %}
+	{% endblock uam_maintenance_head_script %}
+</head>
+{% endblock uam_maintenance_head %}
+
+{% block uam_maintenance_body_tag %}
+<body class="{% block uam_maintenance_bodyclass %}{% endblock %}">
+	{% endblock uam_maintenance_body_tag %}
 
 	{% block uam_maintenance_body %}
-		<body>
-			<div class="content {% block uam_maintenance_body_class %}{% endblock %}">
-			{% block uam_maintenance_content %}{% endblock %}
-		</div>
 
-	{% block uam_maintenance_page_title %}{% endblock %}
-{% block uam_maintenance_page_nav %}{% endblock %}
+		{% block uam_maintenance_main %}
+			<div class="content {% block uam_maintenance_page_class %}{% endblock %}">
+				{% block uam_maintenance_page_header %}{% spaceless %}
+					<div class="uam_maintenance_page_header">
+						<h1>{% block uam_maintenance_page_title %}{% endblock %}</h1>
+					</div>
+				{% endspaceless %}{% endblock %}
+				{% block uam_maintenance_content %}{% endblock uam_maintenance_content %}
+			</div>
+		{% endblock %}
 
-{% endblock %}
-
-{% block uam_maintenance_foot_script %}
-	{% javascripts
-		'bundles/uammaintenance/vendor/jquery/dist/jquery.min.js'
-		'bundles/uammaintenance/vendor/bootstrap/dist/css/bootstrap.min.js'
-	%}
-	<script src="{{ asset_url }}"></script>
-	{% endjavascripts %}
-{% endblock uam_maintenance_foot_script %}
+		{% block uam_maintenance_foot_script %}
+			{% javascripts
+				'bundles/uammaintenance/vendor/jquery/dist/jquery.min.js'
+				'bundles/uammaintenance/vendor/bootstrap/dist/css/bootstrap.min.js'
+			%}
+			<script src="{{ asset_url }}"></script>
+			{% endjavascripts %}
+		{% endblock uam_maintenance_foot_script %}
+	{% endblock %}
 </body>
 </html>
