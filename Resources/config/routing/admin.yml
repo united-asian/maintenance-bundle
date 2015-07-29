@@ -1,4 +1,4 @@
 _uam_maintenance_admin:
     resource: "@UAMMaintenanceBundle/Controller/AdminController.php"
     type: annotation
-    prefix: /maintenance/admin
+    prefix: /admin

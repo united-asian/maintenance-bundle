@@ -3,14 +3,18 @@
 namespace UAM\Bundle\MaintenanceBundle\Controller;
 
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use UAM\Bundle\DatatablesBundle\Controller\DatatablesEnabledControllerTrait;
 use UAM\Bundle\MaintenanceBundle\Propel\Maintenance;
 use UAM\Bundle\MaintenanceBundle\Propel\MaintenanceManager;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
+use UAM\Bundle\MaintenanceBundle\UAMMaintenanceBundle;
 
+/**
+ * @Security("is_granted(UAMMaintenanceBundle::ROLE_UAM_MAINTENANCE)")
+ */
 class AdminController extends Controller
 {
     use DatatablesEnabledControllerTrait {
@@ -20,7 +24,7 @@ class AdminController extends Controller
 
     /**
      * @Route(
-     *      "/",
+     *      "/maintenance",
      *      name="uam_maintenance_admin_index"
      * )
      *
@@ -33,7 +37,7 @@ class AdminController extends Controller
 
    /**
     * @Route(
-    *       "/list",
+    *       "/maintenance/list",
     *       name="uam_maintenance_admin_list",
     *       requirements={
     *           "_format": "json"
@@ -52,7 +56,7 @@ class AdminController extends Controller
 
     /**
      * @Route(
-     *      "/{id}",
+     *      "/maintenance/{id}",
      *      name="uam_maintenance_admin_show",
      *      requirements={
      *          "id": "\d+"
