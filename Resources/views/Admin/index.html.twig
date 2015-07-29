@@ -1,34 +1,61 @@
 {% extends "UAMMaintenanceBundle::base.html.twig" %}
 
-{% trans_default_domain "UAMMaintenanceBundle" %}
+{% trans_default_domain "maintenance" %}
 
-{% block uam_maintenance_body_class %}maintenances{% endblock %}
+{% block uam_maintenance_page_class %}uamdatatables affiliates{% endblock %}
 
 {% block uam_maintenance_head_style %}
-	{{ parent() }}
-	{% include "UAMDatatablesBundle:Datatables:head_style.html.twig" %}
+	{% stylesheets filter="cssrewrite" output="css/*.css"
+		'@uamdatatables_bootstrap_fa_css'
+		'bundles/porotaffiliate/css/admin/affiliates.css'
+	%}
+		<link href="{{ asset_url }}" type="text/css" rel="stylesheet" media="screen" />
+	{% endstylesheets %}
 {% endblock %}
 
 {% block uam_maintenance_content %}
-	{% block maintenance_templates %}
-		{% include 'UAMMaintenanceBundle:Admin:templates.html.twig' %}
-	{% endblock %}
+	{% include 'UAMMaintenanceBundle:Admin:templates.html.twig' %}
 	{% include 'UAMMaintenanceBundle:Admin:maintenance.html.twig' %}
 {% endblock %}
 
 {% block uam_maintenance_foot_script %}
-		{{ parent() }}
-	{% include "UAMDatatablesBundle:Datatables:foot_script_with_mustache.html.twig" %}
+	{{ parent() }}
 	{% javascripts
-		'bundles/uammaintenance/js/maintenance.js'
+		'@uamdatatables_bootstrap_mustache_js'
 	%}
-			<script src="{{ asset_url }}"></script>
+		<script src="{{ asset_url }}"></script>
 	{% endjavascripts %}
 	<script>
-	var uammaintenances = {
-		datatables: {
-			ajax: "{{ path('uam_maintenance_admin_list') }}"
-		}
+		var uamdatatables = {
+		ajax: {
+			url: "{{ path('uam_maintenance_admin_list') }}"
+		},
+
+	    columns: [
+			{
+				data: null,
+				orderable: false,
+				visible: false
+			},
+			{ data: "id" },
+			{ data: "date_start" },
+			{ data: "date_end" },
+			{ data: "description" },
+			{ data: "confirmed" },
+			{
+				data: function( row, type, val, meta ) {
+					if ( "display" === type ) {
+						var template = $( "template.actions" ).html();
+						return Mustache.render( template, row );
+					}
+
+					return "";
+				},
+				orderable: false,
+				className: "actions"
+			}
+		],
+		locale: "{{ app.request.locale }}"
 	};
 	</script>
 {% endblock %}
