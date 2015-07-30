@@ -5,6 +5,14 @@ maintenance:
     create:
         back:       Back to list
         page_title: Maintenance Create
+    form:
+        date_start:
+            label:  Date start
+        date_end:
+            label:  Date end
+        confirmed:
+            label:  Confirmed
+        submit:     Save
     list:
         create:     Create
     date_start:     Date_start

@@ -22,5 +22,34 @@ class MaintenanceFormType extends BaseAbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
+        $builder->add('date_start', 'date', array(
+            'label' => 'maintenance.form.date_start.label',
+            'attr' => array(
+                'class' => 'datepicker',
+            ),
+            'format' => 'dd.MM.yyyy',
+            'widget' => 'single_text',
+        ));
+
+        $builder->add('date_end', 'date', array(
+            'label' => 'maintenance.form.date_end.label',
+            'attr' => array(
+                'class' => 'datepicker',
+            ),
+            'format' => 'dd.MM.yyyy',
+            'widget' => 'single_text',
+        ));
+
+        $builder->add('confirmed', 'choice', array(
+            'label' => 'maintenance.form.confirmed.label',
+            'choices' => array(
+                '0' => 0,
+                '1' => 1
+            ),
+        ));
+
+        $builder->add('submit', 'submit', array(
+            'label' => 'maintenance.form.submit',
+        ));
     }
 }
