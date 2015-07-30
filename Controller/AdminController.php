@@ -86,6 +86,19 @@ class AdminController extends Controller
             $maintenance
         );
 
+        $form->handleRequest($request);
+
+        if ($form->isValid()) {
+            $maintenance->save();
+
+            $this->get('session')->getFlashBag()->add(
+                'success',
+                $this->get('translator')->trans('maintenance.create.success', array(), 'maintenance', $request->getLocale())
+            );
+
+            return $this->redirect($this->generateUrl('uam_maintenance_admin_index'));
+        }
+
         return array(
             'maintenance' => $maintenance,
             'form' => $form->createView()

@@ -29,7 +29,7 @@ class MaintenanceFormType extends BaseAbstractType
             'attr' => array(
                 'class' => 'datepicker',
             ),
-            'format' => 'dd.MM.yyyy',
+            'format' => 'yyyy.MM.dd HH:mm:ss',
             'widget' => 'single_text',
         ));
 
@@ -38,7 +38,7 @@ class MaintenanceFormType extends BaseAbstractType
             'attr' => array(
                 'class' => 'datepicker',
             ),
-            'format' => 'dd.MM.yyyy',
+            'format' => 'yyyy.MM.dd HH:mm:ss',
             'widget' => 'single_text',
         ));
 

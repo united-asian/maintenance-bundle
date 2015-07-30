@@ -29,7 +29,7 @@
 
 	$.fn.maintenance.defaults = {
 		datetimepicker: {
-			format: "DD.MM.YYYY HH:mm:ss",
+			format: "YYYY.MM.DD HH:mm:ss",
 		}
 	};
 } ( window.jQuery );
