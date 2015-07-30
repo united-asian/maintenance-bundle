@@ -2,7 +2,7 @@
 
 {% trans_default_domain "maintenance" %}
 
-{% block uam_maintenance_page_class %}uam_maintenance{% endblock %}
+{% block uam_maintenance_page_class %}maintenance{% endblock %}
 
 {% block uam_maintenance_page_nav %}
 <div class="top-nav">
@@ -15,6 +15,26 @@
 
 {% block uam_maintenance_page_title %}{% trans %}maintenance.create.page_title{% endtrans %}{% endblock %}
 
+{% block uam_maintenance_head_style %}
+	{{ parent() }}
+	{% stylesheets filter="cssrewrite" output="css/*.css"
+		'bundles/uammaintenance/vendor/eonasdan-bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.min.css'
+	%}
+		<link href="{{ asset_url }}" type="text/css" rel="stylesheet" media="screen" />
+	{% endstylesheets %}
+{% endblock %}
+
 {% block uam_maintenance_content %}
      {{ form(form) }}
+{% endblock %}
+
+{% block uam_maintenance_foot_script %}
+	{{ parent() }}
+	{% javascripts
+		'bundles/uammaintenance/vendor/moment/min/moment-with-locales.min.js'
+		'bundles/uammaintenance/vendor/eonasdan-bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min.js'
+		'bundles/uammaintenance/js/maintenance.js'
+	%}
+		<script src="{{ asset_url }}"></script>
+	{% endjavascripts %}
 {% endblock %}
