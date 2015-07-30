@@ -21,13 +21,13 @@ class UAMMaintenanceExtension extends Extension
     {
         $configuration = new Configuration();
         $config = $this->processConfiguration($configuration, $configs);
-                
+
         $container->setParameter('uam_maintenance.warning_delay', $config['warning_delay']);
-        
+
         $loader = new Loader\YamlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
         $loader->load('services.yml');
     }
-        
+
     public function getAlias()
     {
         return 'uam_maintenance';
