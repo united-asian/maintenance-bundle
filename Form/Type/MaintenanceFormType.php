@@ -3,6 +3,8 @@
 namespace UAM\Bundle\MaintenanceBundle\Form\Type;
 
 use Propel\PropelBundle\Form\BaseAbstractType;
+use Symfony\Bridge\Propel1\Form\Type\TranslationCollectionType;
+use Symfony\Bridge\Propel1\Form\Type\TranslationType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
@@ -38,6 +40,20 @@ class MaintenanceFormType extends BaseAbstractType
             ),
             'format' => 'dd.MM.yyyy',
             'widget' => 'single_text',
+        ));
+
+        $builder->add('maintenanceI18ns', new TranslationCollectionType(), array(
+            'languages' => array('en', 'fr'),
+            'type' => new TranslationType(),
+            'options' => array(
+                'data_class' => 'UAM\Bundle\MaintenanceBundle\Propel\MaintenanceI18n',
+                'columns' => array(
+                    'description' => array(
+                        'label' => null,
+                    ),
+                ),
+            ),
+            'label' => 'maintenance.form.description.label',
         ));
 
         $builder->add('confirmed', 'choice', array(

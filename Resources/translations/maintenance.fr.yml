@@ -10,6 +10,8 @@ maintenance:
             label:  Date start
         date_end:
             label:  Date end
+        description:
+            label:   Description
         confirmed:
             label:  Confirmed
         submit:     Save
