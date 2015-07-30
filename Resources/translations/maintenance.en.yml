@@ -1,13 +1,14 @@
 maintenance:
-    id:             Id
+    actions:
+        show:       Show
+    confirmed:      Confirmed
+    create:         Create
     date_start:     Date_start
     date_end:       Date_end
     description:    Description
-    confirmed:      Confirmed
-    actions:
-        show:       Show
+    id:             Id
+    progress:       This App is under maintenance until %date_end%.  Description: %description%
     show:
         back:       Back
         page_title: Show
     warning:        This app will be unavailable during %date_start% to %date_end%
-    progress:       This App is under maintenance until %date_end%.  Description: %description%

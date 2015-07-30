@@ -4,6 +4,12 @@
 
 {% block uam_maintenance_page_class %}uamdatatables affiliates{% endblock %}
 
+{% block uam_maintenance_page_nav %}
+<div class="toolbar pull-right">
+	<a class="btn btn-primary" href="#">{% trans %}maintenance.create{% endtrans %}</a>
+</div>
+{% endblock %}
+
 {% block uam_maintenance_head_style %}
 	{% include 'UAMMaintenanceBundle:Admin:head_style.html.twig' %}
 {% endblock %}
