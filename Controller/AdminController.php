@@ -8,6 +8,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use UAM\Bundle\DatatablesBundle\Controller\DatatablesEnabledControllerTrait;
+use UAM\Bundle\MaintenanceBundle\Form\Type\MaintenanceFormType;
 use UAM\Bundle\MaintenanceBundle\Propel\Maintenance;
 use UAM\Bundle\MaintenanceBundle\Propel\MaintenanceManager;
 use UAM\Bundle\MaintenanceBundle\UAMMaintenanceBundle;
@@ -80,8 +81,14 @@ class AdminController extends Controller
     {
         $maintenance = new Maintenance();
 
+        $form = $this->createForm(
+            new MaintenanceFormType(),
+            $maintenance
+        );
+
         return array(
-            'maintenance' => $maintenance
+            'maintenance' => $maintenance,
+            'form' => $form->createView()
         );
     }
 

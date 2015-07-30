@@ -2,7 +2,11 @@ maintenance:
     actions:
         show:       Show
     confirmed:      Confirmed
-    create:         Create
+    create:
+        back:       Back to list
+        page_title: Maintenance Create
+    list:
+        create:     Create
     date_start:     Date_start
     date_end:       Date_end
     description:    Description
