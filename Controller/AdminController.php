@@ -73,6 +73,19 @@ class AdminController extends Controller
     }
 
     /**
+     * @Route("/maintenance/create", name="uam_maintenance_admin_create")
+     * @Template()
+     */
+    public function createAction(Request $request)
+    {
+        $maintenance = new Maintenance();
+
+        return array(
+            'maintenance' => $maintenance
+        );
+    }
+
+    /**
      * @inheritdoc
      */
     protected function getEntityManager()
