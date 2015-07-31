@@ -13,9 +13,6 @@ use UAM\Bundle\MaintenanceBundle\Propel\Maintenance;
 use UAM\Bundle\MaintenanceBundle\Propel\MaintenanceManager;
 use UAM\Bundle\MaintenanceBundle\UAMMaintenanceBundle;
 
-/**
- * @Security("is_granted(UAMMaintenanceBundle::ROLE_UAM_MAINTENANCE)")
- */
 class AdminController extends Controller
 {
     use DatatablesEnabledControllerTrait {
