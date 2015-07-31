@@ -13,8 +13,14 @@
 			{ data: "id" },
 			{ data: "date_start" },
 			{ data: "date_end" },
-			{ data: "description" },
-			{ data: "confirmed" },
+			{
+				data: "description",
+				orderable: false,
+			},
+			{
+				data: "confirmed",
+				orderable: false,
+			},
 			{
 				data: function( row, type, val, meta ) {
 					if ( "display" === type ) {

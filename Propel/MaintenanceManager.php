@@ -24,7 +24,7 @@ class MaintenanceManager extends AbstractEntityManager
     {
         return array(
             'id' => 'uam_maintenance.id LIKE "%d"',
-            'description' => 'maintenanceI18n.Description LIKE "%%%s%%"'
+            'description' => 'uam_maintenance_i18n.description LIKE "%%%s%%"'
         );
     }
 
@@ -37,8 +37,6 @@ class MaintenanceManager extends AbstractEntityManager
             1 => 'uam_maintenance.Id',
             2 => 'uam_maintenance.DateStart',
             3 => 'uam_maintenance.DateEnd',
-            4 => 'maintenanceI18n.Description',
-            5 => 'uam_maintenance.Confirmed'
         );
     }
 
