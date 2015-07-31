@@ -1,4 +1,24 @@
-_uam_maintenance_admin:
-    resource: "@UAMMaintenanceBundle/Controller/AdminController.php"
-    type: annotation
-    prefix: /admin
+uam_maintenance_admin_index:
+    path: /maintenance/admin
+    defaults:
+        _controller: UAMMaintenanceBundle:Admin:index
+
+uam_maintenance_admin_list:
+    path: /maintenance/list
+    defaults:
+        _controller: UAMMaintenanceBundle:Admin:list
+        _format: json
+    requirements:
+        _format: json
+
+uam_maintenance_admin_show:
+    path: /maintenance/{id}
+    defaults:
+        _controller: UAMMaintenanceBundle:Admin:show
+    requirements:
+        id: \d+
+
+uam_maintenance_admin_create:
+    path: /maintenance/create
+    defaults:
+        _controller: UAMMaintenanceBundle:Admin:create

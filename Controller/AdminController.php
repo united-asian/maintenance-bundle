@@ -13,6 +13,9 @@ use UAM\Bundle\MaintenanceBundle\Propel\Maintenance;
 use UAM\Bundle\MaintenanceBundle\Propel\MaintenanceManager;
 use UAM\Bundle\MaintenanceBundle\UAMMaintenanceBundle;
 
+/**
+ * @Template()
+ */
 class AdminController extends Controller
 {
     use DatatablesEnabledControllerTrait {
@@ -20,49 +23,16 @@ class AdminController extends Controller
         listAction as baseListAction;
     }
 
-    /**
-     * @Route(
-     *      "/maintenance",
-     *      name="uam_maintenance_admin_index"
-     * )
-     *
-     * @Template()
-     */
     public function indexAction(Request $request)
     {
         return $this->baseIndexAction($request);
     }
 
-   /**
-    * @Route(
-    *       "/maintenance/list",
-    *       name="uam_maintenance_admin_list",
-    *       requirements={
-    *           "_format": "json"
-    *       },
-    *       defaults={
-    *           "_format": "json"
-    *       }
-    * )
-    *
-    * @Template()
-    */
     public function listAction(Request $request)
     {
         return $this->baseListAction($request);
     }
 
-    /**
-     * @Route(
-     *      "/maintenance/{id}",
-     *      name="uam_maintenance_admin_show",
-     *      requirements={
-     *          "id": "\d+"
-     *      }
-     * )
-     *
-     * @Template()
-     */
     public function showAction(Request $request, Maintenance $maintenance)
     {
         return array(
@@ -70,10 +40,6 @@ class AdminController extends Controller
         );
     }
 
-    /**
-     * @Route("/maintenance/create", name="uam_maintenance_admin_create")
-     * @Template()
-     */
     public function createAction(Request $request)
     {
         $maintenance = new Maintenance();
