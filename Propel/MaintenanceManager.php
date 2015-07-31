@@ -15,7 +15,6 @@ class MaintenanceManager extends AbstractEntityManager
     {
         return MaintenanceQuery::create()
             ->useMaintenanceI18nQuery('maintenanceI18n')
-                ->filterByLocale($request->getLocale())
             ->endUse();
     }
 
