@@ -8,7 +8,6 @@
 		<column name="confirmed"   type="boolean" size="1" required="true" defaultValue="false" />
 		<behavior name="i18n">
 			<parameter name="i18n_columns"  value="description" />
-			<parameter name="locale_column" value="locale" />
 		</behavior>
 	</table>
 </database>
