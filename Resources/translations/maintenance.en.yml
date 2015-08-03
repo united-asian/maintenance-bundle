@@ -21,6 +21,8 @@ maintenance:
     date_end:       Date_end
     description:    Description
     id:             Id
+    meta:
+        title:      UAM - Maintenance pages
     progress:       This App is under maintenance until %date_end%.  Description: %description%
     show:
         back:       Back
