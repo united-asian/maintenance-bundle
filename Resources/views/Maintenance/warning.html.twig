@@ -1,6 +1,6 @@
 {% extends "UAMMaintenanceBundle::layout.html.twig" %}
 
-{% block flash %}
+{% block uam_maintenance_flash %}
 	{% for flashMessage in app.session.flashbag.get('alert') %}
 		<div class="alert alert-warning">
 			{{ flashMessage|raw }}
