@@ -26,7 +26,8 @@ class MaintenanceController extends Controller
         $current_date = $current_date->format('Y-m-d H:m:s');
 
         $maintenance = MaintenanceQuery::create('Maintenance')
-            ->where("Maintenance.date_start>'$current_date'")
+            ->filterByDateStart(array('min' => $current_date))
+            ->orderByDateStart('asc')
             ->filterByConfirmed(true)
             ->findOne();
 
