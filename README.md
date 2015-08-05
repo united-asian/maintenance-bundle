@@ -55,7 +55,7 @@ public function registerBundles()
 }
 ```
 
-If you are using assetic, add the bundle to the assetic configuration:
+Add the bundle to the assetic configuration:
 
 ```
 #config.yml
