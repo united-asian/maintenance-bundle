@@ -1,4 +1,5 @@
 <?php
+
 namespace UAM\Bundle\MaintenanceBundle\EventListener;
 
 use DateTime;

@@ -23,7 +23,6 @@ class MaintenanceController extends Controller
     public function warningAction(Request $request)
     {
         $current_date = new DateTime('now');
-        $current_date = $current_date->format('Y-m-d H:m:s');
 
         $maintenance = MaintenanceQuery::create('Maintenance')
             ->filterByDateStart(array('min' => $current_date))
@@ -54,28 +53,19 @@ class MaintenanceController extends Controller
         $current_date = new DateTime();
 
         $maintenance = MaintenanceQuery::create()
-            ->filterByDateStart(array('max' => $current_date))
-            ->orderByDateStart('desc')
-            ->filterByConfirmed($confirmed = true)
+            ->filterByDateStart(array("max" => $current_date))
+            ->filterByDateEnd(array("min" => $current_date))
+            ->filterByConfirmed(true)
             ->findOne();
 
-        $maintenance->setLocale($request->getLocale());
+        if ($maintenance) {
+            $maintenance->setLocale($request->getLocale());
 
-        $description = $maintenance->getDescription();
-        $date_end = $maintenance->getDateEnd();
+            return array(
+                'maintenance' => $maintenance
+            );
+        }
 
-        $this->get('session')->getFlashBag()->add(
-            'alert',
-            $this->get('translator')->trans(
-                'maintenance.progress',
-                array('%description%' => $description,'%date_end%' => $date_end->format('Y-M-d H:i:s')),
-                'UAMMaintenanceBundle',
-                $request->getLocale()
-            )
-        );
-
-        return array(
-            'maintenance' => $maintenance
-        );
+        return array();
     }
 }

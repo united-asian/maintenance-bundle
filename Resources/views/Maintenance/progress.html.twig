@@ -1,5 +1,7 @@
-{% for flashMessage in app.session.flashbag.get('alert') %}
-    <div class="flash-alert">
-        {{ flashMessage }}
-    </div>
-{% endfor %}
+{% trans_default_domain "maintenance" %}
+
+{% block uam_maintenance_progress_message %}
+	{% if maintenance is defined %}
+			{% trans with { '%description%': maintenance.description, '%date_end%': maintenance.dateEnd|date('M-d Y H:i:s')  } %}maintenance.progress{% endtrans %}
+	{% endif %}
+{% endblock %}
