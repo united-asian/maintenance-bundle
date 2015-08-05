@@ -3,5 +3,7 @@
 {% block uam_maintenance_progress_message %}
 	{% if maintenance is defined %}
 			{% trans with { '%description%': maintenance.description, '%date_end%': maintenance.dateEnd|date('M-d Y H:i:s')  } %}maintenance.progress{% endtrans %}
+	{% else %}
+		{% trans %}maintenance.no_progress{% endtrans %}
 	{% endif %}
 {% endblock %}

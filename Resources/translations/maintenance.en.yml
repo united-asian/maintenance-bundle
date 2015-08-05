@@ -23,6 +23,7 @@ maintenance:
     id:             Id
     meta:
         title:      UAM - Maintenance pages
+    no_progress:    No maintenance currently in progress.
     progress:       This App is under maintenance until %date_end%.  Description: %description%
     show:
         back:       Back
