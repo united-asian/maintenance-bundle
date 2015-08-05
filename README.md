@@ -67,8 +67,7 @@ Typically, if you have planned a maintenance operation in the near future, you w
 To do this with the UAMMaintenanceBndle, include the following code in the appropraite template of your app. If you want the warning to be displayed in all pages of your app, include this in the base template.
 
 ``` twig
-{% render(controller("UAMMaintenanceBundle:Maintenance:warning,html.twig")) %}
+{% render(controller("UAMMaintenanceBundle:Maintenance:warning")) %}
 ```
 
 ### Customizing the "Under maintenance" page
-
