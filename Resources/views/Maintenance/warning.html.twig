@@ -2,8 +2,6 @@
 
 {% block uam_maintenance_warning_message %}
 	{% if maintenance is defined %}
-		<p>
 			{% trans with { '%date_start%': maintenance.dateStart|date('M-d Y H:i:s'), '%date_end%': maintenance.dateEnd|date('M-d Y H:i:s')  } %}maintenance.warning{% endtrans %}
-		</p>
 	{% endif %}
 {% endblock %}
