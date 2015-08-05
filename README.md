@@ -10,6 +10,18 @@ Requirements
 Installation
 ------------
 
+Add repository to your project's `composer.json`:
+
+```json
+"repositories": [
+		{
+			"type": "composer",
+			"url": "http://satis.united-asian.com/symfony"
+		},
+		...
+]
+```
+
 Add the bundle to your project's `composer.json`:
 
 ```json
@@ -41,6 +53,14 @@ public function registerBundles()
         new UAM\Bundle\MaintenanceBundle\UAMMaintenanceBundle(),
     );
 }
+```
+
+If you are using assetic, add the bundle to the assetic configuration:
+
+```
+#config.yml
+assetic:
+    UAMMaintenanceBundle
 ```
 
 If your composer.json does not include the post-install or post-update `installAssets` script handler, then run the following command:
