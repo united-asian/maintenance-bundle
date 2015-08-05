@@ -32,17 +32,9 @@ class MaintenanceController extends Controller
             ->findOne();
 
         if ($maintenance) {
-            $date_start = $maintenance->getDateStart();
-            $date_end = $maintenance->getDateEnd();
 
-            $this->get('session')->getFlashBag()->add(
-                'alert',
-                $this->get('translator')->trans(
-                    'maintenance.warning',
-                    array('%date_start%' => $date_start->format('Y-M-d H:i:s'),'%date_end%' => $date_end->format('Y-M-d H:i:s')),
-                    'maintenance',
-                    $request->getLocale()
-                )
+            return array(
+                'maintenance' => $maintenance
             );
         }
 
