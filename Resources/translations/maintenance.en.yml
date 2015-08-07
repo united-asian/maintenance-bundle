@@ -24,7 +24,11 @@ maintenance:
     meta:
         title:      UAM - Maintenance pages
     no_progress:    No maintenance currently in progress.
-    progress:       This App is under maintenance until %date_end%.  Description: %description%
+    progress:
+        description: >
+                   <p> This App is under maintenance until %date_end%.</p>
+                   <p> Description: %description% </p>
+        page_title:   Maintenance progress
     show:
         back:       Back
         page_title: Show

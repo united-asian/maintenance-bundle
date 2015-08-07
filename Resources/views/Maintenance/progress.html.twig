@@ -1,9 +1,19 @@
+{% extends "UAMMaintenanceBundle::layout.html.twig" %}
+
 {% trans_default_domain "maintenance" %}
 
-{% block uam_maintenance_progress_message %}
+{% block uam_maintenance_page_class %}progress{% endblock %}
+
+{% block uam_maintenance_page_title %}{% trans %}maintenance.progress.page_title{% endtrans %}{% endblock %}
+
+{% block uam_maintenance_content %}
 	{% if maintenance is defined %}
-			{% trans with { '%description%': maintenance.description, '%date_end%': maintenance.dateEnd|date('M-d Y H:i:s')  } %}maintenance.progress{% endtrans %}
+		<div class="maintenence_progress">
+			{% trans with { '%description%': maintenance.description, '%date_end%': maintenance.dateEnd|date('M-d Y H:i:s')  } %}maintenance.progress.description{% endtrans %}
+		</div>
 	{% else %}
-		{% trans %}maintenance.no_progress{% endtrans %}
+		<div class="maintenence_no_progress">
+			{% trans %}maintenance.no_progress{% endtrans %}
+		</div>
 	{% endif %}
 {% endblock %}
