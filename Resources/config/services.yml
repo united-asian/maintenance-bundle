@@ -1,6 +1,6 @@
 services:
     progress.listener:
-        class: UAM\Bundle\MaintenanceBundle\EventListener\WarningRequestListener
+        class: UAM\Bundle\MaintenanceBundle\EventListener\MaintenanceListener
         arguments:
             - @router
         tags:

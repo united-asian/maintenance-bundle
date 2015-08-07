@@ -13,7 +13,7 @@ use UAM\Bundle\MaintenanceBundle\Controller\MaintenanceController;
 use UAM\Bundle\MaintenanceBundle\Exceptions\AppUnderMaintenanceException;
 use UAM\Bundle\MaintenanceBundle\Propel\MaintenanceQuery;
 
-class WarningRequestListener
+class MaintenanceListener
 {
     protected $router;
 
