@@ -4,6 +4,8 @@
 
 {% block uam_maintenance_page_class %}uamdatatables maintenances{% endblock %}
 
+{% block uam_maintenance_page_title %} {% trans %}maintenance.title{% endtrans %}{% endblock %}
+
 {% block uam_maintenance_page_nav %}
 <div class="toolbar pull-right">
 	<a class="btn btn-primary" href="{{ path('uam_maintenance_admin_create') }}">{% trans %}maintenance.list.create{% endtrans %}</a>
