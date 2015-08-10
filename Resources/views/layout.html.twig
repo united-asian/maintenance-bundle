@@ -25,31 +25,36 @@
 		{% endstylesheets %}
 	{% endblock uam_maintenance_head_style %}
 
-	{% block uam_maintenance_head_script %}
-	{% endblock uam_maintenance_head_script %}
+	{% block uam_maintenance_head_script %}{% endblock uam_maintenance_head_script %}
 </head>
 {% endblock uam_maintenance_head %}
 
 <body class="{% block uam_maintenance_bodyclass %}{% endblock %}">
 {% block uam_maintenance_body %}
 	<div class="container {% block uam_maintenance_page_class %}{% endblock %}">
-		<div class="page-header" id="banner">
+		<header class="page-header" role="banner">
 			{% block uam_maintenance_page_nav %}{% endblock %}
-			<h3>{% block uam_maintenance_page_title %}{% endblock %}</h3>
-		</div>
+			{% block uam_maintenance_page_title %}{% endblock %}
+		</header>
 		<div class="content">
 			{% block uam_maintenance_content %}{% endblock %}
 		</div>
 	</div>
 
-	{% block uam_maintenance_foot_script %}
-		{% javascripts
-			'bundles/uammaintenance/vendor/jquery/dist/jquery.min.js'
-			'bundles/uammaintenance/vendor/bootstrap/dist/js/bootstrap.min.js'
-		%}
-		<script src="{{ asset_url }}"></script>
-		{% endjavascripts %}
-	{% endblock uam_maintenance_foot_script %}
+	<footer role="contentinfo">
+		<div class="container">
+			{% block uam_maintenance_footer %}{% endblock %}
+		</div>
+	</footer>
 {% endblock %}
+
+{% block uam_maintenance_foot_script %}
+	{% javascripts
+		'bundles/uammaintenance/vendor/jquery/dist/jquery.min.js'
+		'bundles/uammaintenance/vendor/bootstrap/dist/js/bootstrap.min.js'
+	%}
+	<script src="{{ asset_url }}"></script>
+	{% endjavascripts %}
+{% endblock uam_maintenance_foot_script %}
 </body>
 </html>
