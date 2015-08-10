@@ -1,20 +1,14 @@
 {% trans_default_domain "maintenance" %}
 
-{% block uam_maintenance_html_tag %}
 <!DOCTYPE html>
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
 <!--[if IE 8]>     	<html class="no-js lt-ie9"> <![endif]-->
 <!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
-{% endblock uam_maintenance_html_tag %}
 
-{% block uam_maintenance_head %}
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-	<title>{% block title %}{% trans %}maintenance.meta.title{% endtrans %}{% endblock %}</title>
-	<meta name="description" content="{% block description %}{% endblock %}">
-	<meta name="viewport" content="{% block viewport %}width=device-width, initial-scale=1{% endblock %}">
 
 	{% block uam_maintenance_head_style %}
 		{% stylesheets filter="cssrewrite"
@@ -27,7 +21,6 @@
 
 	{% block uam_maintenance_head_script %}{% endblock uam_maintenance_head_script %}
 </head>
-{% endblock uam_maintenance_head %}
 
 <body class="{% block uam_maintenance_bodyclass %}{% endblock %}">
 {% block uam_maintenance_body %}
