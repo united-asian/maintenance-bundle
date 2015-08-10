@@ -30,7 +30,7 @@ maintenance:
                    <p> Description: %description% </p>
         page_title:   Maintenance progress
     show:
-        back:       Back
+        back:       Back to list
         page_title: Show
     title:          Maintenances
     warning:        This app will be unavailable during %date_start% to %date_end%
