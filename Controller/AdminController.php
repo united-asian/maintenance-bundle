@@ -15,6 +15,7 @@ use UAM\Bundle\MaintenanceBundle\UAMMaintenanceBundle;
 
 /**
  * @Template()
+ * @Security("is_granted('ROLE_UAM_MAINTENANCE')")
  */
 class AdminController extends Controller
 {
