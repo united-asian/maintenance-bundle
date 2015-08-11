@@ -5,7 +5,8 @@ namespace UAM\Bundle\MaintenanceBundle\EventListener;
 use DateTime;
 use Symfony\Bundle\AsseticBundle\Controller\AsseticController;
 use Symfony\Bundle\WebProfilerBundle\Controller\ProfilerController;
-use Symfony\Component\HttpFoundation\RedirectResponse;
+use Symfony\Component\DependencyInjection\ContainerInterface;
+use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Event\FilterControllerEvent;
 use Symfony\Component\HttpKernel\Event\GetResponseForExceptionEvent;
 use Symfony\Component\Routing\RouterInterface;
@@ -15,11 +16,12 @@ use UAM\Bundle\MaintenanceBundle\Propel\MaintenanceQuery;
 
 class MaintenanceListener
 {
-    protected $router;
+    protected $router, $container;
 
-    public function __construct(RouterInterface $router)
+    public function __construct(RouterInterface $router, ContainerInterface $container)
     {
         $this->router = $router;
+        $this->container = $container;
     }
 
     public function onKernelController(FilterControllerEvent $event)
@@ -45,7 +47,7 @@ class MaintenanceListener
             ->findOne();
 
         if ($maintenance) {
-            throw new AppUnderMaintenanceException('App under maintenance');
+            throw new AppUnderMaintenanceException($maintenance, 'App under maintenance',null, null);
         }
     }
 
@@ -57,8 +59,16 @@ class MaintenanceListener
             return;
         }
 
-        $response = new RedirectResponse($this->router->generate('uam_maintenance_progress'));
+        $response = new Response(
+            $this->container->get('templating')->render(
+                ('UAMMaintenanceBundle:Maintenance:progress.html.twig'),
+                array(
+                    'maintenance' => $exception->getMaintenance(),
+                )
+            )
+        );
 
         $event->setResponse($response);
     }
 }
+
