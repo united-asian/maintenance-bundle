@@ -23,8 +23,7 @@ class MaintenanceManager extends AbstractEntityManager
     protected function getSearchColumns(Request $request)
     {
         return array(
-            'id' => 'uam_maintenance.id LIKE "%d"',
-            'description' => 'uam_maintenance_i18n.description LIKE "%%%s%%"'
+            'date' => 'uam_maintenance.date_start <= "%1$s" AND uam_maintenance.date_end >= "%1$s"',
         );
     }
 
