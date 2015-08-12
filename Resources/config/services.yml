@@ -1,8 +1,8 @@
 services:
-    progress.listener:
+    maintenance.listener:
         class: UAM\Bundle\MaintenanceBundle\EventListener\MaintenanceListener
         arguments:
             [@router, @service_container]
         tags:
-            - { name: kernel.event_listener, event: kernel.controller, method: onKernelController }
+            - { name: kernel.event_listener, event: kernel.controller, method: onKernelController, priority: 255 }
             - { name: kernel.event_listener, event: kernel.exception, method: onKernelException }
