@@ -34,8 +34,22 @@ class AdminController extends Controller
         return $this->baseListAction($request);
     }
 
-    public function showAction(Request $request, Maintenance $maintenance)
+    public function showAction(Request $request, $id)
     {
+        $manager = $this->getEntityManager();
+
+        $maintenance = $manager
+            ->getQuery($request)
+            ->filterById($id)
+            ->findOne();
+
+        if (!$maintenance) {
+            throw $this->createNotFoundException(sprintf(
+                'Unable to find a Maintenence for id: %d',
+                $id
+            ));
+        }
+
         return array(
             'maintenance' => $maintenance
         );

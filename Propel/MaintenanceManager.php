@@ -11,7 +11,7 @@ class MaintenanceManager extends AbstractEntityManager
     /**
      * @inheritdoc
      */
-    protected function getQuery(Request $request)
+    public function getQuery(Request $request)
     {
         return MaintenanceQuery::create()
             ->joinI18n($request->getLocale());
