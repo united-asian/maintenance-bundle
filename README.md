@@ -91,6 +91,16 @@ To do this with the UAMMaintenanceBndle, include the following code in the appro
 ```
 
 ### Customizing the "Under maintenance" page
+#### Import routing file
+
+``` bash
+uam_maintenance:
+    resource: "@UAMMaintenanceBundle/Resources/config/routing/maintenance.yml"
+```
+#### override the layout
+override the `layout.html.twig` template into your app so that page/message displayed will be consistent with the style of your app.
+
+Or you can also override the `progress.html.twig` template for the "Under maintenence page". 
 
 Security
 ----
