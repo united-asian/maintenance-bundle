@@ -91,3 +91,10 @@ To do this with the UAMMaintenanceBndle, include the following code in the appro
 ```
 
 ### Customizing the "Under maintenance" page
+
+Security
+----
+
+#### To access the admin pages
+
+Admin pages are restricted to certain users. To access the admin pages, the user must have the role ROLE_UAM_MAINTENANCE.
