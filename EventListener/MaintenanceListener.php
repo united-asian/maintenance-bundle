@@ -44,6 +44,7 @@ class MaintenanceListener
             ->filterByDateStart(array("max" => $current_date))
             ->filterByDateEnd(array("min" => $current_date))
             ->filterByConfirmed(true)
+            ->orderByDateStart('asc')
             ->findOne();
 
         if ($maintenance) {
@@ -71,4 +72,3 @@ class MaintenanceListener
         $event->setResponse($response);
     }
 }
-
