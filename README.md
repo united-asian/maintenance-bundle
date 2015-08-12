@@ -102,6 +102,20 @@ override the `layout.html.twig` template into your app so that page/message disp
 
 Or you can also override the `progress.html.twig` template for the "Under maintenence page". 
 
+### Customizing the Admin pages
+#### Import routing file
+
+``` bash
+uam_maintenance_admin:
+    resource: "@UAMMaintenanceBundle/Resources/config/routing/admin.yml"
+```
+#### override the layout
+override the `layout.html.twig` template into your app so that admin pages displayed will be consistent with the style of your app.
+
+To access the admin pages, the user must have the role ROLE_UAM_MAINTENANCE.
+
+
+
 Security
 ----
 
