@@ -49,6 +49,16 @@ class MaintenanceListener
 
         if ($maintenance) {
             throw new AppUnderMaintenanceException($maintenance, 'App under maintenance',null, null);
+        } else {
+
+            $upcomming_maintenance = MaintenanceQuery::create()
+                ->filterByDateStart(array('min' => $current_date))
+                ->orderByDateStart('asc')
+                ->filterByConfirmed(true)
+                ->findOne();
+
+            if ($upcomming_maintenance) {
+            }
         }
     }
 
