@@ -14,34 +14,6 @@ class MaintenanceController extends Controller
 {
     /**
      * @Route(
-     *      "/warning",
-     *      name="uam_maintenance_warning"
-     * )
-     *
-     * @Template()
-     */
-    public function warningAction(Request $request)
-    {
-        $current_date = new DateTime('now');
-
-        $maintenance = MaintenanceQuery::create('Maintenance')
-            ->filterByDateStart(array('min' => $current_date))
-            ->orderByDateStart('asc')
-            ->filterByConfirmed(true)
-            ->findOne();
-
-        if ($maintenance) {
-
-            return array(
-                'maintenance' => $maintenance
-            );
-        }
-
-        return array();
-    }
-
-    /**
-     * @Route(
      *      "/progress",
      *      name="uam_maintenance_progress"
      * )
