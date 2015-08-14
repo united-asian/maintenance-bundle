@@ -23,6 +23,7 @@ class UAMMaintenanceExtension extends Extension
         $config = $this->processConfiguration($configuration, $configs);
 
         $container->setParameter('uam_maintenance.listener.priority', $config['listener']['priority']);
+        $container->setParameter('uam_maintenance.listener.class', $config['listener']['class']);
 
         $loader = new Loader\YamlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
         $loader->load('services.yml');

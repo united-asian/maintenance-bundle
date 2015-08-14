@@ -1,6 +1,6 @@
 services:
     maintenance.listener:
-        class: UAM\Bundle\MaintenanceBundle\EventListener\MaintenanceListener
+        class: %uam_maintenance.listener.class%
         arguments:
             [@router, @service_container]
         tags:
