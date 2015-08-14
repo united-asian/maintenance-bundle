@@ -5,6 +5,7 @@ maintenance:
     create:
         back:       Back to list
         page_title: Maintenance Create
+        success:    Maintenence record created successfully.
     form:
         date_start:
             label:  Date start
