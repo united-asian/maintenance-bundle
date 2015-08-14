@@ -22,8 +22,12 @@ class Configuration implements ConfigurationInterface
 
         $rootNode
             ->children()
-                ->scalarNode('warning_delay')
-                    ->defaultValue(15)
+                ->arrayNode('listener')
+                    ->children()
+                        ->scalarNode('priority')
+                            ->defaultValue(255)
+                        ->end()
+                    ->end()
                 ->end()
             ->end();
 

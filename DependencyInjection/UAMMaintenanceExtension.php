@@ -22,7 +22,7 @@ class UAMMaintenanceExtension extends Extension
         $configuration = new Configuration();
         $config = $this->processConfiguration($configuration, $configs);
 
-        $container->setParameter('uam_maintenance.warning_delay', $config['warning_delay']);
+        $container->setParameter('uam_maintenance.listener.priority', $config['listener']['priority']);
 
         $loader = new Loader\YamlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
         $loader->load('services.yml');
