@@ -63,8 +63,8 @@ class MaintenanceListener
                 $translator = $this->container->get('translator');
                 $request = $this->container->get('request');
 
-                $session->getFlashBag()->add(
-                    'alert',
+                $session->getFlashBag()->set(
+                    'maintenance',
                     $translator->trans(
                         'maintenance.warning', array(
                             '%date_start%' => $upcomming_maintenance->getDateStart()->format('M-d Y H:i:s'),
