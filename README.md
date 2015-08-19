@@ -74,6 +74,13 @@ or
 ``` bash
 $ php app/console assets:install --symlink
 ```
+#### Update your database schema
+
+Run the following command to update the database.
+
+```
+$ php app/console propel:model:build
+```
 
 Usage
 -----
