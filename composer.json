@@ -19,8 +19,8 @@
 		"uam/twig-i18n-extension": "dev-master"
 	},
 	"require-dev": {
-        "fzaninotto/faker": "^1.5",
-        "phpunit/phpunit": "4.6.*"
+		"fzaninotto/faker": "^1.5",
+		"phpunit/phpunit": "4.6.*"
 	},
 	"extra": {
 		"branch-alias": {
