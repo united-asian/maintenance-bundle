@@ -10,7 +10,7 @@ Requirements
 Installation
 ------------
 
-Add repository to your project's `composer.json`:
+#### Add repository to your project's `composer.json`:
 
 ```json
 "repositories": [
@@ -22,7 +22,7 @@ Add repository to your project's `composer.json`:
 ]
 ```
 
-Add the bundle to your project's `composer.json`:
+#### Add the bundle to your project's `composer.json`:
 
 ```json
 {
@@ -33,14 +33,14 @@ Add the bundle to your project's `composer.json`:
 }
 ```
 
-Run `composer install` or `composer update` to install the bundle:
+#### Run `composer install` or `composer update` to install the bundle:
 
 ``` bash
 $ php composer.phar update
 ```
 
 
-Enable the bundle in the app's kernel:
+#### Enable the bundle in the app's kernel:
 
 ``` php
 <?php
@@ -55,7 +55,7 @@ public function registerBundles()
 }
 ```
 
-Add the bundle to the assetic configuration:
+#### Add the bundle to the assetic configuration:
 
 ```
 #config.yml
@@ -63,7 +63,7 @@ assetic:
     UAMMaintenanceBundle
 ```
 
-If your composer.json does not include the post-install or post-update `installAssets` script handler, then run the following command:
+#### If your composer.json does not include the post-install or post-update `installAssets` script handler, then run the following command:
 
 ``` bash
 $ php app/console assets:install
@@ -76,7 +76,7 @@ $ php app/console assets:install --symlink
 ```
 #### Update your database schema
 
-Run the following command to update the database.
+Run the following command to update the database schema.
 
 ```
 $ php app/console propel:model:build
