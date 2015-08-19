@@ -7,7 +7,7 @@
 			"UAM\\Bundle\\MaintenanceBundle\\": ""
 		}
 	},
-		"repositories": [
+	"repositories": [
 		{
 			"type": "composer",
 			"url": "http://satis.united-asian.com/symfony"
@@ -15,7 +15,8 @@
 	],
 	"require": {
 		"symfony/http-kernel": "~2.3",
-		"uam/datatables-bundle": "~3.0"
+		"uam/datatables-bundle": "~3.0",
+		"uam/twig-i18n-extension": "dev-master"
 	},
 	"require-dev": {
         "fzaninotto/faker": "^1.5",
@@ -25,5 +26,5 @@
 		"branch-alias": {
 			"dev-master": "0.1.x-dev"
 		}
-}
+	}
 }
