@@ -2,7 +2,6 @@
 
 namespace UAM\Bundle\MaintenanceBundle\Controller;
 
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -11,11 +10,10 @@ use UAM\Bundle\DatatablesBundle\Controller\DatatablesEnabledControllerTrait;
 use UAM\Bundle\MaintenanceBundle\Form\Type\MaintenanceFormType;
 use UAM\Bundle\MaintenanceBundle\Propel\Maintenance;
 use UAM\Bundle\MaintenanceBundle\Propel\MaintenanceManager;
-use UAM\Bundle\MaintenanceBundle\UAMMaintenanceBundle;
 
 /**
  * @Template()
- * @Security("is_granted('ROLE_UAM_MAINTENANCE')")
+ * @Security("is_granted('ROLE_UAM_MAINTENANCE_ADMIN')")
  */
 class AdminController extends Controller
 {
