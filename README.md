@@ -86,6 +86,12 @@ Run the following command to update the database schema.
 $ php app/console propel:model:build
 ```
 
+Then run the below command to generate the migration file.
+
+```
+$ php app/console propel:migration:generate-diff
+```
+
 Usage
 -----
 
