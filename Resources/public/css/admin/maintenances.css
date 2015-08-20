@@ -1,3 +1,7 @@
 .maintenances table tr td .confirmed {
 	color: #3c763d;
 }
+
+#maintenanceI18ns > div > label {
+    display: none;
+}
