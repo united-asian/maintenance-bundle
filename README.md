@@ -95,6 +95,13 @@ $ php app/console propel:migration:generate-diff
 ```
 After generating migration file open the migration file and copy the query to create `uam_maintenence` and `uam_maintenance_i18n` table and run the query. 
 
+Or
+
+run the command to execute generated sql.
+```
+$ php app/console propel:migration:migrate
+```
+
 Usage
 -----
 
