@@ -25,7 +25,7 @@ class MaintenanceFormType extends BaseAbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder->add('date_start', 'date', array(
-            'label' => 'maintenance.form.date_start.label',
+            'label' => 'form.date_start.label',
             'attr' => array(
                 'class' => 'datepicker',
             ),
@@ -34,7 +34,7 @@ class MaintenanceFormType extends BaseAbstractType
         ));
 
         $builder->add('date_end', 'date', array(
-            'label' => 'maintenance.form.date_end.label',
+            'label' => 'form.date_end.label',
             'attr' => array(
                 'class' => 'datepicker',
             ),
@@ -53,11 +53,11 @@ class MaintenanceFormType extends BaseAbstractType
                     ),
                 ),
             ),
-            'label' => 'maintenance.form.description.label',
+            'label' => 'form.description.label',
         ));
 
         $builder->add('confirmed', 'choice', array(
-            'label' => 'maintenance.form.confirmed.label',
+            'label' => 'form.confirmed.label',
             'choices' => array(
                 '0' => 0,
                 '1' => 1
@@ -65,7 +65,7 @@ class MaintenanceFormType extends BaseAbstractType
         ));
 
         $builder->add('submit', 'submit', array(
-            'label' => 'maintenance.form.submit',
+            'label' => 'form.submit',
         ));
     }
 }

@@ -1,37 +1,39 @@
-maintenance:
+create:
+    back:           Back to list
+    page_title:     Maintenance Create
+    success:        Maintenence record created successfully.
+
+form:
+    confirmed:
+        label:      Confirmed
+    date_start:
+        label:      From
+    date_end:
+        label:      To
+    description:
+        label:      Description
+    submit:         Save
+
+list:
     actions:
         show:       Show
     confirmed:      Confirmed
-    create:
-        back:       Back to list
-        page_title: Maintenance Create
-        success:    Maintenence record created successfully.
-    form:
-        date_start:
-            label:  Date start
-        date_end:
-            label:  Date end
-        description:
-            label:   Description
-        confirmed:
-            label:  Confirmed
-        submit:     Save
-    list:
-        create:     Create
-    date_start:     Date_start
-    date_end:       Date_end
+    create:         Create
+    date_start:     From
+    date_end:       To
     description:    Description
-    id:             Id
-    meta:
-        title:      UAM - Maintenance pages
-    no_progress:    No maintenance currently in progress.
-    progress:
-        description: >
-                   <p> This App is under maintenance until %date_end%.</p>
-                   <p> Description: %description% </p>
-        page_title:   Maintenance progress
-    show:
-        back:       Back to list
-        page_title: Show
-    title:          Maintenances
-    warning:        This app will be unavailable during %date_start% to %date_end%
+    page_title:          Maintenances
+
+no_progress:        No maintenance currently in progress.
+
+progress:
+    description: >
+               <p> This App is under maintenance until %date_end%.</p>
+               <p> Description: %description% </p>
+    page_title:    Maintenance progress
+
+show:
+    back:          Back to list
+    page_title:    Show
+
+warning:           This app will be unavailable during %date_start% to %date_end%

@@ -66,7 +66,7 @@ class MaintenanceListener
                 $session->getFlashBag()->set(
                     'maintenance',
                     $translator->trans(
-                        'maintenance.warning', array(
+                        'warning', array(
                             '%date_start%' => $upcomming_maintenance->getDateStart()->format('M-d Y H:i:s'),
                             '%date_end%' => $upcomming_maintenance->getDateEnd()->format('M-d Y H:i:s'),
                         ),
