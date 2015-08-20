@@ -139,7 +139,7 @@ uam_maintenance_admin:
 #### override the layout
 override the `layout.html.twig` template into your app so that admin pages displayed will be consistent with the style of your app.
 
-To access the admin pages, the user must have the role ROLE_UAM_MAINTENANCE.
+To access the admin pages, the user must have the role `ROLE_UAM_MAINTENANCE_ADMIN`.
 
 
 
@@ -148,4 +148,4 @@ Security
 
 #### To access the admin pages
 
-Admin pages are restricted to certain users. To access the admin pages, the user must have the role ROLE_UAM_MAINTENANCE.
+Admin pages are restricted to certain users. To access the admin pages, the user must have the role `ROLE_UAM_MAINTENANCE_ADMIN`.
