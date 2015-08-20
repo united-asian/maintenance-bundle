@@ -17,7 +17,14 @@
 				orderable: false,
 			},
 			{
-				data: "confirmed",
+				data: function( row, type, val, meta ) {
+					if ( "display" === type ) {
+						var template = $( "template.confirmed" ).html();
+						return Mustache.render( template, row );
+					}
+
+					return "";
+				},
 				orderable: false,
 			},
 			{
