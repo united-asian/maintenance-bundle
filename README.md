@@ -41,6 +41,7 @@ $ php composer.phar update
 
 
 #### Enable the bundle in the app's kernel:
+enable the UAMMaintenanceBundle, UAMDatatablesBundle and UAMTwigI18nBundle in app's kernel.
 
 ``` php
 <?php
@@ -50,7 +51,9 @@ public function registerBundles()
 {
     $bundles = array(
         // ...
+        new UAM\Bundle\DatatablesBundle\UAMDatatablesBundle(),
         new UAM\Bundle\MaintenanceBundle\UAMMaintenanceBundle(),
+        new UAM\Twig\Extension\I18n\Bridge\Symfony\UAMTwigI18nBundle(),
     );
 }
 ```
@@ -60,7 +63,8 @@ public function registerBundles()
 ```
 #config.yml
 assetic:
-    UAMMaintenanceBundle
+    - UAMDatatablesBundle
+    - UAMMaintenanceBundle
 ```
 
 #### If your composer.json does not include the post-install or post-update `installAssets` script handler, then run the following command:
@@ -80,6 +84,12 @@ Run the following command to update the database schema.
 
 ```
 $ php app/console propel:model:build
+```
+
+Then run the below command to generate the migration file.
+
+```
+$ php app/console propel:migration:generate-diff
 ```
 
 Usage
