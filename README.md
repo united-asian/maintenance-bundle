@@ -39,7 +39,7 @@ Installation
 ``` bash
 $ php bin/composer.phar update
 ```
-asssuming composer.phar is in bin directory.
+assuming composer.phar is in bin directory.
 
 
 #### Enable the bundle in the app's kernel:
