@@ -28,16 +28,13 @@ Installation
 {
     "require": {
         "uam/maintenance-bundle": "dev-master",
+        "uam/twig-i18n-extension": "dev-master",
         ...
     }
 }
 ```
 
-#### Run `composer install` or `composer update` to install the bundle:
-
-``` bash
-$ php composer.phar update
-```
+#### Update composer to install the bundle.
 
 
 #### Enable the bundle in the app's kernel:
@@ -91,6 +88,7 @@ Then run the below command to generate the migration file.
 ```
 $ php app/console propel:migration:generate-diff
 ```
+After generating migration file run the sql query to create `uam_maintenence` and `uam_maintenance_i18n` table in your database. 
 
 Usage
 -----
