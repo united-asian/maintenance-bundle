@@ -30,7 +30,6 @@ class MaintenenceFilterType extends AbstractType
             'attr' => array(
                 'class' => 'datepicker',
             ),
-            'format' => 'yyyy.MM.dd HH:mm:ss',
             'widget' => 'single_text',
         ));
     }

@@ -5,7 +5,7 @@ create:
 
 filter:
     date:
-        label:      Date
+        label:      Search by date
 
 form:
     confirmed:
