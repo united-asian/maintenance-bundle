@@ -28,16 +28,18 @@ Installation
 {
     "require": {
         "uam/maintenance-bundle": "dev-master",
+        "uam/twig-i18n-extension": "dev-master",
         ...
     }
 }
 ```
 
-#### Run `composer install` or `composer update` to install the bundle:
+#### Run `composer update` to install the bundle:
 
 ``` bash
-$ php composer.phar update
+$ php bin/composer.phar update
 ```
+assuming composer.phar is in bin directory.
 
 
 #### Enable the bundle in the app's kernel:
@@ -91,6 +93,14 @@ Then run the below command to generate the migration file.
 ```
 $ php app/console propel:migration:generate-diff
 ```
+After generating migration file open the migration file and copy the query to create `uam_maintenence` and `uam_maintenance_i18n` table and run the query. 
+
+Or
+
+run the command to execute generated sql.
+```
+$ php app/console propel:migration:migrate
+```
 
 Usage
 -----
@@ -129,7 +139,7 @@ uam_maintenance_admin:
 #### override the layout
 override the `layout.html.twig` template into your app so that admin pages displayed will be consistent with the style of your app.
 
-To access the admin pages, the user must have the role ROLE_UAM_MAINTENANCE.
+To access the admin pages, the user must have the role `ROLE_UAM_MAINTENANCE_ADMIN`.
 
 
 
@@ -138,4 +148,4 @@ Security
 
 #### To access the admin pages
 
-Admin pages are restricted to certain users. To access the admin pages, the user must have the role ROLE_UAM_MAINTENANCE.
+Admin pages are restricted to certain users. To access the admin pages, the user must have the role `ROLE_UAM_MAINTENANCE_ADMIN`.
