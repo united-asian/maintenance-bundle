@@ -11,7 +11,7 @@ class MaintenenceFilterType extends AbstractType
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
         $resolver->setDefaults(array(
-            'translation_domain' => 'maintenence',
+            'translation_domain' => 'maintenance',
         ));
     }
 
