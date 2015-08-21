@@ -3,6 +3,10 @@ create:
     page_title:     Maintenance Create
     success:        Maintenence record created successfully.
 
+filter:
+    date:
+        label:      Date
+
 form:
     confirmed:
         label:      Confirmed
