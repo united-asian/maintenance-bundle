@@ -2,9 +2,10 @@
 
 namespace UAM\Bundle\MaintenanceBundle\Propel;
 
-use UAM\Bundle\MaintenanceBundle\Propel\MaintenanceQuery;
 use Symfony\Component\HttpFoundation\Request;
 use UAM\Bundle\DatatablesBundle\Propel\AbstractEntityManager;
+use UAM\Bundle\MaintenanceBundle\Filter\Type\MaintenenceFilterType;
+use UAM\Bundle\MaintenanceBundle\Propel\MaintenanceQuery;
 
 class MaintenanceManager extends AbstractEntityManager
 {
@@ -47,5 +48,11 @@ class MaintenanceManager extends AbstractEntityManager
         return array(
         array('uam_maintenance.DateStart', 'asc')
         );
+    }
+
+    public function getFilterType(Request $request)
+    {
+        return new MaintenenceFilterType();
+
     }
 }
