@@ -1,0 +1,25 @@
+{{ form_start(form) }}
+	<div class="row">
+		<div class="col-md-6">
+			{{ form_row(form.date_start) }}
+		</div>
+		<div class="col-md-6">
+			{{ form_row(form.date_end) }}
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-1">{{ form_label(form.maintenanceI18ns) }}</div>
+	</div>
+	<div class="row">
+		<div class="col-md-6">{{ form_widget(form.maintenanceI18ns[0]) }}</div>
+		<div class="col-md-6">{{ form_widget(form.maintenanceI18ns[1]) }}</div>
+	</div>
+	<div class="row">
+		<div class="col-md-6">
+			{{ form_row(form.confirmed) }}
+		</div>
+	</div>
+
+	{{ form_row(form.submit) }}
+
+{{ form_end(form) }}
