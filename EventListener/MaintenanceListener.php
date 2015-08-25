@@ -51,7 +51,8 @@ class MaintenanceListener
 
         if ($maintenance) {
             $maintenance->setLocale($request->getLocale());
-            throw new AppUnderMaintenanceException($maintenance, 'App under maintenance',null, null);
+
+            throw new AppUnderMaintenanceException($maintenance, 'App under maintenance', null, null);
         } else {
 
             $upcomming_maintenance = MaintenanceQuery::create()
