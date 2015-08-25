@@ -4,16 +4,16 @@
 
 {% block uam_maintenance_page_class %}uam_maintenence_progress{% endblock %}
 
-{% block uam_maintenance_page_title %}{% trans %}maintenance.progress.page_title{% endtrans %}{% endblock %}
+{% block uam_maintenance_page_title %}{% trans %}progress.page_title{% endtrans %}{% endblock %}
 
 {% block uam_maintenance_content %}
 	{% if maintenance is defined %}
 		<div class="maintenence_progress">
-			{% trans with { '%description%': maintenance.description, '%date_end%': maintenance.dateEnd|date('M-d Y H:i:s')  } %}maintenance.progress.description{% endtrans %}
+			{% trans with { '%description%': maintenance.description, '%date_end%': maintenance.dateEnd|datetime('medium', 'short', null, app.request.locale)  } %}progress.description{% endtrans %}
 		</div>
 	{% else %}
 		<div class="maintenence_no_progress">
-			{% trans %}maintenance.no_progress{% endtrans %}
+			{% trans %}no_progress{% endtrans %}
 		</div>
 	{% endif %}
 {% endblock %}
