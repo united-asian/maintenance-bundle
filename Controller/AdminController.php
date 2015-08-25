@@ -69,7 +69,7 @@ class AdminController extends Controller
 
             $this->get('session')->getFlashBag()->add(
                 'success',
-                $this->get('translator')->trans('maintenance.create.success', array(), 'maintenance', $request->getLocale())
+                $this->get('translator')->trans('create.success', array(), 'maintenance', $request->getLocale())
             );
 
             return $this->redirect($this->generateUrl('uam_maintenance_admin_index'));
