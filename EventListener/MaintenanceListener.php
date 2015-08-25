@@ -9,18 +9,16 @@ use Symfony\Component\DependencyInjection\ContainerInterface;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Event\FilterControllerEvent;
 use Symfony\Component\HttpKernel\Event\GetResponseForExceptionEvent;
-use Symfony\Component\Routing\RouterInterface;
 use UAM\Bundle\MaintenanceBundle\Controller\MaintenanceController;
 use UAM\Bundle\MaintenanceBundle\Exceptions\AppUnderMaintenanceException;
 use UAM\Bundle\MaintenanceBundle\Propel\MaintenanceQuery;
 
 class MaintenanceListener
 {
-    protected $router, $container;
+    protected $container;
 
-    public function __construct(RouterInterface $router, ContainerInterface $container)
+    public function __construct(ContainerInterface $container)
     {
-        $this->router = $router;
         $this->container = $container;
     }
 
