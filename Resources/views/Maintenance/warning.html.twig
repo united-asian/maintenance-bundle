@@ -1,1 +1,5 @@
+{% trans_default_domain "maintenance" %}
 
+{% block uam_maintenance_warning_message %}
+	{% trans with { '%date_start%': upcomming_maintenance.dateStart|datetime('long', 'short', null, app.request.locale), '%date_end%': upcomming_maintenance.dateEnd|datetime('long', 'short', null, app.request.locale)  } %}warning{% endtrans %}
+{% endblock %}
