@@ -26,6 +26,8 @@ class MaintenanceListener
 
     public function onKernelController(FilterControllerEvent $event)
     {
+        $request = $this->container->get('request');
+
         $controller = $event->getController();
 
         if (!is_array($controller)) {
@@ -48,6 +50,7 @@ class MaintenanceListener
             ->findOne();
 
         if ($maintenance) {
+            $maintenance->setLocale($request->getLocale());
             throw new AppUnderMaintenanceException($maintenance, 'App under maintenance',null, null);
         } else {
 
@@ -61,7 +64,6 @@ class MaintenanceListener
 
                 $session = $this->container->get('session');
                 $translator = $this->container->get('translator');
-                $request = $this->container->get('request');
 
                 $session->getFlashBag()->set(
                     'maintenance',
