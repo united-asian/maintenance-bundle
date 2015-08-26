@@ -32,24 +32,29 @@ class AdminController extends Controller
         return $this->baseListAction($request);
     }
 
-    public function showAction(Request $request, $id)
+    public function editAction(Request $request, Maintenance $maintenance)
     {
-        $manager = $this->getEntityManager();
+        $form = $this->createForm(
+            new MaintenanceFormType(),
+            $maintenance
+        );
 
-        $maintenance = $manager
-            ->getQuery($request)
-            ->filterById($id)
-            ->findOne();
+        $form->handleRequest($request);
 
-        if (!$maintenance) {
-            throw $this->createNotFoundException(sprintf(
-                'Unable to find a Maintenence for id: %d',
-                $id
-            ));
+        if ($form->isValid()) {
+            $maintenance->save();
+
+            $this->get('session')->getFlashBag()->add(
+                'success',
+                $this->get('translator')->trans('edit.success', array(), 'maintenance', $request->getLocale())
+            );
+
+            return $this->redirect($this->generateUrl('uam_maintenance_admin_index'));
         }
 
         return array(
-            'maintenance' => $maintenance
+            'maintenance' => $maintenance,
+            'form' => $form->createView()
         );
     }
 
