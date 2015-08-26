@@ -3,6 +3,11 @@ create:
     page_title:     Maintenance Create
     success:        Maintenence record created successfully.
 
+edit:
+    back:           Back to list
+    page_title:     Maintenence Edit
+    success:        Maintenence record updated successfully.
+
 filter:
     date:
         label:      Search by date
@@ -16,17 +21,20 @@ form:
         label:      To
     description:
         label:      Description
-    submit:         Save
+    create:
+        submit:     Save
+    edit:
+        submit:     Update
 
 list:
     actions:
-        show:       Show
+        edit:       Edit
     confirmed:      Confirmed
     create:         Create
     date_start:     From
     date_end:       To
     description:    Description
-    page_title:          Maintenances
+    page_title:     Maintenances
 
 no_progress:        No maintenance currently in progress.
 
@@ -35,9 +43,5 @@ progress:
                <p> This App is under maintenance until %date_end%.</p>
                <p> Description: %description% </p>
     page_title:    Maintenance progress
-
-show:
-    back:          Back to list
-    page_title:    Show
 
 warning:           This app will be unavailable during %date_start% to %date_end%
