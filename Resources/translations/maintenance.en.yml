@@ -3,6 +3,9 @@ create:
     page_title:     Maintenance Create
     success:        Maintenence record created successfully.
 
+delete:
+    success:        Maintenance record deleted successfully.
+
 edit:
     back:           Back to list
     page_title:     Maintenence Edit
