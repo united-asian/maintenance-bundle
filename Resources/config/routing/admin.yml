@@ -11,10 +11,10 @@ uam_maintenance_admin_list:
     requirements:
         _format: json
 
-uam_maintenance_admin_show:
-    path: /maintenance/{id}
+uam_maintenance_admin_edit:
+    path: /maintenance/edit/{id}
     defaults:
-        _controller: UAMMaintenanceBundle:Admin:show
+        _controller: UAMMaintenanceBundle:Admin:edit
     requirements:
         id: \d+
 
