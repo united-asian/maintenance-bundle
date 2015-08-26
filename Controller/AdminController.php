@@ -88,6 +88,13 @@ class AdminController extends Controller
 
     public function deleteAction(Request $request, Maintenance $maintenance)
     {
+        $maintenance->delete();
+
+        $this->get('session')->getFlashBag()->add(
+            'success',
+            $this->get('translator')->trans('delete.success', array(), 'maintenance', $request->getLocale())
+        );
+
         return $this->redirect($this->generateUrl('uam_maintenance_admin_index'));
     }
 
