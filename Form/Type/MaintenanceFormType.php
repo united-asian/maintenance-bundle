@@ -6,6 +6,8 @@ use Propel\PropelBundle\Form\BaseAbstractType;
 use Symfony\Bridge\Propel1\Form\Type\TranslationCollectionType;
 use Symfony\Bridge\Propel1\Form\Type\TranslationType;
 use Symfony\Component\Form\FormBuilderInterface;
+use Symfony\Component\Form\FormEvent;
+use Symfony\Component\Form\FormEvents;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
 class MaintenanceFormType extends BaseAbstractType
@@ -64,8 +66,13 @@ class MaintenanceFormType extends BaseAbstractType
             ),
         ));
 
-        $builder->add('submit', 'submit', array(
-            'label' => 'form.submit',
-        ));
+        $builder->addEventListener(FormEvents::PRE_SET_DATA, function (FormEvent $event) {
+            $maintenance = $event->getData();
+            $form = $event->getForm();
+
+            $form->add('submit', 'submit', array(
+                'label' => $maintenance->isNew() ? 'form.create.submit' : 'form.edit.submit',
+            ));
+        });
     }
 }
