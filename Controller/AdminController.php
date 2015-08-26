@@ -32,32 +32,6 @@ class AdminController extends Controller
         return $this->baseListAction($request);
     }
 
-    public function editAction(Request $request, Maintenance $maintenance)
-    {
-        $form = $this->createForm(
-            new MaintenanceFormType(),
-            $maintenance
-        );
-
-        $form->handleRequest($request);
-
-        if ($form->isValid()) {
-            $maintenance->save();
-
-            $this->get('session')->getFlashBag()->add(
-                'success',
-                $this->get('translator')->trans('edit.success', array(), 'maintenance', $request->getLocale())
-            );
-
-            return $this->redirect($this->generateUrl('uam_maintenance_admin_index'));
-        }
-
-        return array(
-            'maintenance' => $maintenance,
-            'form' => $form->createView()
-        );
-    }
-
     public function createAction(Request $request)
     {
         $maintenance = new Maintenance();
@@ -84,6 +58,37 @@ class AdminController extends Controller
             'maintenance' => $maintenance,
             'form' => $form->createView()
         );
+    }
+
+    public function editAction(Request $request, Maintenance $maintenance)
+    {
+        $form = $this->createForm(
+            new MaintenanceFormType(),
+            $maintenance
+        );
+
+        $form->handleRequest($request);
+
+        if ($form->isValid()) {
+            $maintenance->save();
+
+            $this->get('session')->getFlashBag()->add(
+                'success',
+                $this->get('translator')->trans('edit.success', array(), 'maintenance', $request->getLocale())
+            );
+
+            return $this->redirect($this->generateUrl('uam_maintenance_admin_index'));
+        }
+
+        return array(
+            'maintenance' => $maintenance,
+            'form' => $form->createView()
+        );
+    }
+
+    public function deleteAction(Request $request, Maintenance $maintenance)
+    {
+        return $this->redirect($this->generateUrl('uam_maintenance_admin_index'));
     }
 
     /**

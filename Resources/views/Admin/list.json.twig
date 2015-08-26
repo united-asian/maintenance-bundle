@@ -10,7 +10,8 @@
 	"description": "{{ uam_maintenance.setLocale(app.request.locale).description }}",
 	"confirmed": "{{ uam_maintenance.confirmed }}",
 	"urls": {
-		"edit": "{{ path('uam_maintenance_admin_edit', { id: uam_maintenance.id }) }}"
+		"edit": "{{ path('uam_maintenance_admin_edit', { id: uam_maintenance.id }) }}",
+		"delete": "{{ path('uam_maintenance_admin_delete', { id: uam_maintenance.id}) }}"
 	}
 }
 {% endblock %}

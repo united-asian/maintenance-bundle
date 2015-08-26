@@ -11,6 +11,11 @@ uam_maintenance_admin_list:
     requirements:
         _format: json
 
+uam_maintenance_admin_create:
+    path: /maintenance/create
+    defaults:
+        _controller: UAMMaintenanceBundle:Admin:create
+
 uam_maintenance_admin_edit:
     path: /maintenance/edit/{id}
     defaults:
@@ -18,7 +23,9 @@ uam_maintenance_admin_edit:
     requirements:
         id: \d+
 
-uam_maintenance_admin_create:
-    path: /maintenance/create
+uam_maintenance_admin_delete:
+    path: /maintenance/delete/{id}
     defaults:
-        _controller: UAMMaintenanceBundle:Admin:create
+        _controller: UAMMaintenanceBundle:Admin:delete
+    requirements:
+        id: \d+

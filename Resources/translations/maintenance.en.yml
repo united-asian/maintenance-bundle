@@ -28,6 +28,7 @@ form:
 
 list:
     actions:
+        delete:     Delete
         edit:       Edit
     confirmed:      Confirmed
     create:         Create
