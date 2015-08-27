@@ -48,14 +48,14 @@ class AdminController extends Controller
         if ($form->isValid()) {
             $maintenance->save();
 
-            $event = new MaintenanceEvent($maintenance);
+            $event_name = MaintenanceEvents::RECORD_CREATED;
 
-            $dispatcher = $this->get('event_dispatcher');
-
-            $dispatcher->dispatch(MaintenanceEvents::RECORD_CREATED, $event);
+            $this->processDispatch($maintenance, $event_name);
 
             if ($maintenance->getConfirmed()) {
-                $dispatcher->dispatch(MaintenanceEvents::RECORD_CONFIRMED, $event);
+               $event_name = MaintenanceEvents::RECORD_CONFIRMED;
+
+               $this->processDispatch($maintenance, $event_name);
             }
 
             $this->get('session')->getFlashBag()->add(
@@ -85,12 +85,9 @@ class AdminController extends Controller
             $maintenance->save();
 
             if ($maintenance->getConfirmed()) {
+                $event_name = MaintenanceEvents::RECORD_CONFIRMED;
 
-                $event = new MaintenanceEvent($maintenance);
-
-                $dispatcher = $this->get('event_dispatcher');
-
-                $dispatcher->dispatch(MaintenanceEvents::RECORD_CONFIRMED, $event);
+                $this->processDispatch($maintenance, $event_name);
             }
 
             $this->get('session')->getFlashBag()->add(
@@ -111,11 +108,9 @@ class AdminController extends Controller
     {
         $maintenance->delete();
 
-        $event = new MaintenanceEvent($maintenance);
+        $event_name = MaintenanceEvents::RECORD_DELETED;
 
-        $dispatcher = $this->get('event_dispatcher');
-
-        $dispatcher->dispatch(MaintenanceEvents::RECORD_DELETED, $event);
+        $this->processDispatch($maintenance, $event_name);
 
         $this->get('session')->getFlashBag()->add(
             'success',
@@ -131,5 +126,14 @@ class AdminController extends Controller
     protected function getEntityManager()
     {
         return new MaintenanceManager();
+    }
+
+    protected function processDispatch(Maintenance $maintenance, $event_name)
+    {
+        $event = new MaintenanceEvent($maintenance);
+
+        $dispatcher = $this->get('event_dispatcher');
+
+        $dispatcher->dispatch($event_name, $event);
     }
 }
