@@ -54,6 +54,10 @@ class AdminController extends Controller
 
             $dispatcher->dispatch(MaintenanceEvents::RECORD_CREATED, $event);
 
+            if ($maintenance->getConfirmed()) {
+                $dispatcher->dispatch(MaintenanceEvents::RECORD_CONFIRMED, $event);
+            }
+
             $this->get('session')->getFlashBag()->add(
                 'success',
                 $this->get('translator')->trans('create.success', array(), 'maintenance', $request->getLocale())
@@ -79,6 +83,15 @@ class AdminController extends Controller
 
         if ($form->isValid()) {
             $maintenance->save();
+
+            if ($maintenance->getConfirmed()) {
+
+                $event = new MaintenanceEvent($maintenance);
+
+                $dispatcher = $this->get('event_dispatcher');
+
+                $dispatcher->dispatch(MaintenanceEvents::RECORD_CONFIRMED, $event);
+            }
 
             $this->get('session')->getFlashBag()->add(
                 'success',
