@@ -7,7 +7,9 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use UAM\Bundle\DatatablesBundle\Controller\DatatablesEnabledControllerTrait;
+use UAM\Bundle\MaintenanceBundle\Event\MaintenanceEvent;
 use UAM\Bundle\MaintenanceBundle\Form\Type\MaintenanceFormType;
+use UAM\Bundle\MaintenanceBundle\MaintenanceEvents;
 use UAM\Bundle\MaintenanceBundle\Propel\Maintenance;
 use UAM\Bundle\MaintenanceBundle\Propel\MaintenanceManager;
 
@@ -45,6 +47,12 @@ class AdminController extends Controller
 
         if ($form->isValid()) {
             $maintenance->save();
+
+            $event = new MaintenanceEvent($maintenance);
+
+            $dispatcher = $this->get('event_dispatcher');
+
+            $dispatcher->dispatch(MaintenanceEvents::RECORD_CREATED, $event);
 
             $this->get('session')->getFlashBag()->add(
                 'success',
