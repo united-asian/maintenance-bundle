@@ -98,6 +98,12 @@ class AdminController extends Controller
     {
         $maintenance->delete();
 
+        $event = new MaintenanceEvent($maintenance);
+
+        $dispatcher = $this->get('event_dispatcher');
+
+        $dispatcher->dispatch(MaintenanceEvents::RECORD_DELETED, $event);
+
         $this->get('session')->getFlashBag()->add(
             'success',
             $this->get('translator')->trans('delete.success', array(), 'maintenance', $request->getLocale())
