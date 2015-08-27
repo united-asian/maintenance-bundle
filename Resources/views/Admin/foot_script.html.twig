@@ -40,7 +40,31 @@
 				className: "actions"
 			}
 		],
-		searching: false,
+		rowCallback: function( row, data ) {
+			var template_message = $( "template.delete_message" ).html();
+			var template_cancel = $( "template.delete_cancel" ).html();
+			var template_confirm = $( "template.delete_confirm" ).html();
+			$( "a.delete", row ).click( function( e ) {
+				e.preventDefault();
+				bootbox.confirm({
+					message: Mustache.render( template_message, row ),
+					buttons: {
+						"cancel": {
+							label: Mustache.render( template_cancel, row )
+						},
+						"confirm": {
+							label: Mustache.render( template_confirm, row )
+						}
+					},
+					callback: function( result ) {
+						if ( result ) {
+							window.location = data.urls.delete;
+						}
+					}
+				} );
+			} );
+		},
+		searching: false
 	};
 	$( ".datepicker" ).datetimepicker({
 		format: "YYYY-MM-DD HH:mm",

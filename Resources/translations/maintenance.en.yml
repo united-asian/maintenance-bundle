@@ -4,6 +4,9 @@ create:
     success:        Maintenence record created successfully.
 
 delete:
+    cancel:         Cancel
+    confirm:        Confirm
+    message:        Are you sure you want to delete this record?
     success:        Maintenance record deleted successfully.
 
 edit:
