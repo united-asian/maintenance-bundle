@@ -32,7 +32,8 @@
     },
     "moment": {
       "main": [
-      	"./min/*"
+        "min/moment-with-locales.js",
+        "min/moment-with-locales.min.js"
       ]
     }
   }
