@@ -53,9 +53,9 @@ class AdminController extends Controller
             $this->processDispatch($maintenance, $event_name);
 
             if ($maintenance->getConfirmed()) {
-               $event_name = MaintenanceEvents::RECORD_CONFIRMED;
+                $event_name = MaintenanceEvents::RECORD_CONFIRMED;
 
-               $this->processDispatch($maintenance, $event_name);
+                $this->processDispatch($maintenance, $event_name);
             }
 
             $this->get('session')->getFlashBag()->add(
@@ -68,7 +68,7 @@ class AdminController extends Controller
 
         return array(
             'maintenance' => $maintenance,
-            'form' => $form->createView()
+            'form' => $form->createView(),
         );
     }
 
@@ -100,7 +100,7 @@ class AdminController extends Controller
 
         return array(
             'maintenance' => $maintenance,
-            'form' => $form->createView()
+            'form' => $form->createView(),
         );
     }
 
@@ -121,7 +121,7 @@ class AdminController extends Controller
     }
 
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     protected function getEntityManager()
     {

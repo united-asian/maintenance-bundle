@@ -3,7 +3,6 @@
 namespace UAM\Bundle\MaintenanceBundle\Exceptions;
 
 use UAM\Bundle\MaintenanceBundle\Propel\Maintenance;
-
 use RuntimeException;
 
 class AppUnderMaintenanceException extends RuntimeException
