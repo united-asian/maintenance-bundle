@@ -3,6 +3,7 @@ services:
         class: %uam_maintenance.listener.class%
         arguments:
             - "@request_stack"
+            - "@templating"
         tags:
             - { name: kernel.event_listener, event: kernel.controller, method: onKernelController, priority: %uam_maintenance.listener.priority% }
             - { name: kernel.event_listener, event: kernel.exception, method: onKernelException }

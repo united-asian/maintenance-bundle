@@ -9,6 +9,7 @@ use Symfony\Component\HttpFoundation\RequestStack;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Event\FilterControllerEvent;
 use Symfony\Component\HttpKernel\Event\GetResponseForExceptionEvent;
+use Symfony\Component\Templating\EngineInterface;
 use UAM\Bundle\MaintenanceBundle\Controller\MaintenanceController;
 use UAM\Bundle\MaintenanceBundle\Exceptions\AppUnderMaintenanceException;
 use UAM\Bundle\MaintenanceBundle\Propel\MaintenanceQuery;
@@ -17,14 +18,17 @@ class MaintenanceListener
 {
     protected $request_stack;
 
-    public function __construct(RequestStack $request_stack)
+    protected $templating;
+
+    public function __construct(RequestStack $request_stack, EngineInterface $templating)
     {
         $this->request_stack = $request_stack;
+
+        $this->templating = $templating;
     }
 
     public function onKernelController(FilterControllerEvent $event)
     {
-        die('maintenance');
         $request = $this->getCurrentRequest();
 
         $controller = $event->getController();
@@ -41,9 +45,6 @@ class MaintenanceListener
 
         $current_date = new DateTime();
 
-        var_dump($current_date->format('Y-m-d'));
-        die();
-
         $maintenance = MaintenanceQuery::create()
             ->filterByDateStart(array('max' => $current_date))
             ->filterByDateEnd(array('min' => $current_date))
@@ -53,8 +54,6 @@ class MaintenanceListener
 
         if ($maintenance) {
             $maintenance->setLocale($request->getLocale());
-
-            var_dump($maintenance);
 
             throw new AppUnderMaintenanceException($maintenance, 'App under maintenance', null, null);
         } else {
@@ -70,7 +69,7 @@ class MaintenanceListener
 
                 $session->getFlashBag()->set(
                     'maintenance',
-                    $this->container->get('templating')->render(
+                    $this->getTemplating()->render(
                         ('UAMMaintenanceBundle:Maintenance:warning.html.twig'),
                         array(
                             'upcomming_maintenance' => $upcomming_maintenance,
@@ -79,8 +78,6 @@ class MaintenanceListener
                 );
             }
         }
-
-        die();
     }
 
     public function onKernelException(GetResponseForExceptionEvent $event)
@@ -92,7 +89,7 @@ class MaintenanceListener
         }
 
         $response = new Response(
-            $this->container->get('templating')->render(
+            $this->getTemplating()->render(
                 ('UAMMaintenanceBundle:Maintenance:progress.html.twig'),
                 array(
                     'maintenance' => $exception->getMaintenance(),
@@ -112,5 +109,10 @@ class MaintenanceListener
     {
         return $this->getRequestStack()
             ->getCurrentRequest();
+    }
+
+    protected function getTemplating()
+    {
+        return $this->templating;
     }
 }
