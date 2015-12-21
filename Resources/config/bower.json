@@ -1,0 +1,45 @@
+{
+  "name": "uam/maintanence-bundle",
+  "dependencies": {
+    "bootbox": "^4.3",
+    "bootstrap": "~3.3",
+    "Font-Awesome": "~4.5",
+    "eonasdan-bootstrap-datetimepicker": "~4.17",
+    "jquery": "~1.11",
+    "moment": "^2.10"
+  },
+  "overrides": {
+    "bootstrap": {
+      "main": [
+        "./dist/css/bootstrap.css",
+        "./dist/css/bootstrap.min.css",
+        "./dist/css/bootstrap.css.map",
+        "./dist/js/bootstrap.js",
+        "./dist/js/bootstrap.min.js"
+      ]
+    },
+    "Font-Awesome": {
+      "main": [
+        "./css/font-awesome.css",
+        "./css/font-awesome.min.css",
+        "./fonts/*"
+      ]
+    },
+    "jquery": {
+      "main": [
+        "./dist/*"
+      ]
+    },
+    "moment": {
+      "main": [
+        "min/moment-with-locales.js",
+        "min/moment-with-locales.min.js"
+      ]
+    },
+    "moment-timezone": {
+      "main": [
+        "builds/*"
+      ]
+    }
+  }
+}

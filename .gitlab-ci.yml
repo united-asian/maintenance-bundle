@@ -1,0 +1,6 @@
+satis:
+    script:
+        - satis uam
+    stage: deploy
+    tags:
+        - satis

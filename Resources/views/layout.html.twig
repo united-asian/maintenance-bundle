@@ -10,7 +10,14 @@
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 
-	{% block uam_maintenance_head_style %}{% endblock %}
+	{% block uam_maintenance_head_style %}
+		{% stylesheets filter="cssrewrite"
+			'bundles/uammaintenance/vendor/bootstrap/dist/css/bootstrap.min.css'
+			'bundles/uammaintenance/vendor/Font-Awesome/css/font-awesome.min.css'
+		%}
+			<link href="{{ asset_url }}" type="text/css" rel="stylesheet" media="screen">
+		{% endstylesheets %}
+	{% endblock %}
 
 	{% block uam_maintenance_head_script %}{% endblock %}
 </head>
@@ -34,6 +41,13 @@
 	</footer>
 {% endblock %}
 
-{% block uam_maintenance_foot_script %}{% endblock %}
+{% block uam_maintenance_foot_script %}
+	{% javascripts
+			'bundles/uammaintenance/vendor/jquery/dist/jquery.min.js'
+			'bundles/uammaintenance/vendor/bootstrap/dist/js/bootstrap.min.js'
+		%}
+			<script src="{{ asset_url }}"></script>
+		{% endjavascripts %}
+{% endblock %}
 </body>
 </html>
