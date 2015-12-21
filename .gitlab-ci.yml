@@ -1,6 +1,6 @@
 satis:
     script:
-        - satis uam
+        - satis symfony
     stage: deploy
     tags:
         - satis
