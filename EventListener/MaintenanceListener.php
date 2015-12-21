@@ -6,6 +6,7 @@ use DateTime;
 use Symfony\Bundle\AsseticBundle\Controller\AsseticController;
 use Symfony\Bundle\WebProfilerBundle\Controller\ProfilerController;
 use Symfony\Component\DependencyInjection\ContainerInterface;
+use Symfony\Component\HttpFoundation\RequestStack;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Event\FilterControllerEvent;
 use Symfony\Component\HttpKernel\Event\GetResponseForExceptionEvent;
@@ -15,16 +16,17 @@ use UAM\Bundle\MaintenanceBundle\Propel\MaintenanceQuery;
 
 class MaintenanceListener
 {
-    protected $container;
+    protected $request_stack;
 
-    public function __construct(ContainerInterface $container)
+    public function __construct(RequestStack $request_stack)
     {
-        $this->container = $container;
+        $this->request_stack = $request_stack;
     }
 
     public function onKernelController(FilterControllerEvent $event)
     {
-        $request = $this->container->get('request');
+        die('maintenance');
+        $request = $this->getCurrentRequest();
 
         $controller = $event->getController();
 
@@ -40,6 +42,9 @@ class MaintenanceListener
 
         $current_date = new DateTime();
 
+        var_dump($current_date->format('Y-m-d'));
+        die();
+
         $maintenance = MaintenanceQuery::create()
             ->filterByDateStart(array("max" => $current_date))
             ->filterByDateEnd(array("min" => $current_date))
@@ -49,6 +54,8 @@ class MaintenanceListener
 
         if ($maintenance) {
             $maintenance->setLocale($request->getLocale());
+
+            var_dump($maintenance);
 
             throw new AppUnderMaintenanceException($maintenance, 'App under maintenance', null, null);
         } else {
@@ -75,6 +82,8 @@ class MaintenanceListener
                 );
             }
         }
+
+            die();
     }
 
     public function onKernelException(GetResponseForExceptionEvent $event)
@@ -95,5 +104,16 @@ class MaintenanceListener
         );
 
         $event->setResponse($response);
+    }
+
+    protected function getRequestStack()
+    {
+        return $this->request_stack;
+    }
+
+    protected function getCurrentRequest()
+    {
+        return $this->getRequestStack()
+            ->getCurrentRequest();
     }
 }
