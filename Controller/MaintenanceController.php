@@ -8,7 +8,6 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use UAM\Bundle\MaintenanceBundle\Propel\MaintenanceQuery;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 
 class MaintenanceController extends Controller
 {
@@ -25,8 +24,8 @@ class MaintenanceController extends Controller
         $current_date = new DateTime();
 
         $maintenance = MaintenanceQuery::create()
-            ->filterByDateStart(array("max" => $current_date))
-            ->filterByDateEnd(array("min" => $current_date))
+            ->filterByDateStart(array('max' => $current_date))
+            ->filterByDateEnd(array('min' => $current_date))
             ->filterByConfirmed(true)
             ->orderByDateStart('asc')
             ->findOne();
@@ -35,7 +34,7 @@ class MaintenanceController extends Controller
             $maintenance->setLocale($request->getLocale());
 
             return array(
-                'maintenance' => $maintenance
+                'maintenance' => $maintenance,
             );
         }
 

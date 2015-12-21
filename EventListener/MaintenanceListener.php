@@ -5,7 +5,6 @@ namespace UAM\Bundle\MaintenanceBundle\EventListener;
 use DateTime;
 use Symfony\Bundle\AsseticBundle\Controller\AsseticController;
 use Symfony\Bundle\WebProfilerBundle\Controller\ProfilerController;
-use Symfony\Component\DependencyInjection\ContainerInterface;
 use Symfony\Component\HttpFoundation\RequestStack;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Event\FilterControllerEvent;
@@ -46,8 +45,8 @@ class MaintenanceListener
         die();
 
         $maintenance = MaintenanceQuery::create()
-            ->filterByDateStart(array("max" => $current_date))
-            ->filterByDateEnd(array("min" => $current_date))
+            ->filterByDateStart(array('max' => $current_date))
+            ->filterByDateEnd(array('min' => $current_date))
             ->filterByConfirmed(true)
             ->orderByDateStart('asc')
             ->findOne();
@@ -59,7 +58,6 @@ class MaintenanceListener
 
             throw new AppUnderMaintenanceException($maintenance, 'App under maintenance', null, null);
         } else {
-
             $upcomming_maintenance = MaintenanceQuery::create()
                 ->filterByDateStart(array('min' => $current_date))
                 ->orderByDateStart('asc')
@@ -67,7 +65,6 @@ class MaintenanceListener
                 ->findOne();
 
             if ($upcomming_maintenance) {
-
                 $session = $this->container->get('session');
                 $translator = $this->container->get('translator');
 
@@ -83,7 +80,7 @@ class MaintenanceListener
             }
         }
 
-            die();
+        die();
     }
 
     public function onKernelException(GetResponseForExceptionEvent $event)

@@ -5,12 +5,11 @@ namespace UAM\Bundle\MaintenanceBundle\Propel;
 use Symfony\Component\HttpFoundation\Request;
 use UAM\Bundle\DatatablesBundle\Propel\AbstractEntityManager;
 use UAM\Bundle\MaintenanceBundle\Filter\Type\MaintenenceFilterType;
-use UAM\Bundle\MaintenanceBundle\Propel\MaintenanceQuery;
 
 class MaintenanceManager extends AbstractEntityManager
 {
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public function getQuery(Request $request)
     {
@@ -19,7 +18,7 @@ class MaintenanceManager extends AbstractEntityManager
     }
 
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     protected function getSearchColumns(Request $request)
     {
@@ -29,7 +28,7 @@ class MaintenanceManager extends AbstractEntityManager
     }
 
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     protected function getSortColumns(Request $request)
     {
@@ -41,18 +40,17 @@ class MaintenanceManager extends AbstractEntityManager
     }
 
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     protected function getDefaultSortOrder(Request $request)
     {
         return array(
-        array('uam_maintenance.DateStart', 'asc')
+        array('uam_maintenance.DateStart', 'asc'),
         );
     }
 
     public function getFilterType(Request $request)
     {
         return new MaintenenceFilterType();
-
     }
 }

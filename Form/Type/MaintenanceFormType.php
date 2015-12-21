@@ -16,7 +16,7 @@ class MaintenanceFormType extends BaseAbstractType
     {
         $resolver->setDefaults(array(
             'data_class' => 'UAM\Bundle\MaintenanceBundle\Propel\Maintenance',
-            'name'       => 'maintenance',
+            'name' => 'maintenance',
             'translation_domain' => 'maintenance',
         ));
     }
@@ -62,7 +62,7 @@ class MaintenanceFormType extends BaseAbstractType
             'label' => 'form.confirmed.label',
             'choices' => array(
                 '0' => 0,
-                '1' => 1
+                '1' => 1,
             ),
         ));
 
