@@ -1,4 +1,3 @@
- .*
 Propel/**/map
 Propel/**/om
 Resources/config/bower_components
