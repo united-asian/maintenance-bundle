@@ -16,7 +16,7 @@
 	"require": {
 		"symfony/http-kernel": "~2.3",
 		"uam/datatables-bundle": "~3.0",
-		"uam/twig-i18n-extension": "dev-master"
+		"uam/twig-i18n-extension": "~0.1"
 	},
 	"require-dev": {
 		"fzaninotto/faker": "^1.5",
