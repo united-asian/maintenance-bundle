@@ -47,8 +47,8 @@ no_progress:        No maintenance currently in progress.
 
 progress:
     description: >
-               <p> This App is under maintenance until %date_end%.</p>
-               <p> Description: %description% </p>
+               <p>This website is under maintenance until %date_end%.</p>
+               <p>%description% </p>
     page_title:    Maintenance in progress
 
 warning:           This app will be unavailable during %date_start% to %date_end%
