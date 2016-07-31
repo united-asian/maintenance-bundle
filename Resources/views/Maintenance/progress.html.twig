@@ -8,11 +8,11 @@
 
 {% block uam_maintenance_content %}
 	{% if maintenance is defined %}
-		<div class="maintenence_progress alert-danger">
+		<div class="alert alert-danger">
 			{% trans with { '%description%': maintenance.description, '%date_end%': maintenance.dateEnd|datetime('medium', 'short', null, app.request.locale)  } %}progress.description{% endtrans %}
 		</div>
 	{% else %}
-		<div class="maintenence_no_progress alert-info">
+		<div class="alert alert-info maintenance_no_progress ">
 			{% trans %}no_progress{% endtrans %}
 		</div>
 	{% endif %}
