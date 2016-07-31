@@ -52,8 +52,6 @@ class MaintenanceListener
             ->orderByDateStart('asc')
             ->findOne();
 
-//        die($current_date->format('Y-m-d H:i'));
-
         if ($maintenance) {
             $maintenance->setLocale($request->getLocale());
 
