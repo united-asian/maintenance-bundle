@@ -64,8 +64,8 @@ class MaintenanceListener
                 ->findOne();
 
             if ($upcomming_maintenance) {
-                $session = $this->container->get('session');
-                $translator = $this->container->get('translator');
+                $session = $this->getCurrentRequest()
+                    ->getSession();
 
                 $session->getFlashBag()->set(
                     'maintenance',
