@@ -14,13 +14,13 @@
 		}
 	],
 	"require": {
-		"symfony/http-kernel": "~2.3",
-		"uam/datatables-bundle": "~3.0",
-		"uam/twig-i18n-extension": "~0.1"
+		"symfony/http-kernel": "^2.3|^3.0",
+		"uam/datatables-bundle": "^4.0",
+		"uam/twig-i18n-extension": "@stable"
 	},
 	"require-dev": {
 		"fzaninotto/faker": "^1.5",
-		"phpunit/phpunit": "4.6.*"
+		"phpunit/phpunit": "^4.6|^5.4"
 	},
 	"extra": {
 		"branch-alias": {
