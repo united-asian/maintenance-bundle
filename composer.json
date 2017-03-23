@@ -15,7 +15,7 @@
 	],
 	"require": {
 		"symfony/http-kernel": "^2.3|^3.0",
-		"uam/datatables-bundle": "^4.0",
+		"uam/datatables-bundle": "^5.0",
 		"uam/twig-i18n-extension": "@stable"
 	},
 	"require-dev": {
@@ -24,7 +24,7 @@
 	},
 	"extra": {
 		"branch-alias": {
-			"dev-master": "0.1.x-dev"
+			"dev-master": "0.2.x-dev"
 		}
 	}
 }
